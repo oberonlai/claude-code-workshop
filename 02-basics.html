@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UNIT 02 基本觀念與環境｜Claude Code 基礎教學與進階觀念</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body data-unit="02" data-unit-name="基本觀念與環境" data-prev="01-checkup.html" data-next="03-session.html">
+<div id="viewport"><div id="stage">
+
+
+<!-- ── 章節首頁（珊瑚） ───────────────────── -->
+<section class="slide sec o" data-sec="基本觀念與環境">
+  <div class="ghostno">02</div>
+  <div class="secno r">SECTION 02</div>
+  <h1 class="r mega" style="--d:.12s">基本觀念<br>與環境</h1>
+  <p class="lead r" style="--d:.24s; margin-top:22px">事實、流程、工具、記憶——各歸各位。</p>
+</section>
+
+
+<!-- ── 四層分工 ───────────────────────────── -->
+<section class="slide" data-sec="四層分工">
+  <div class="kicker r">Claude 的知識分四層放</div>
+  <div class="cols c-2 r" style="--d:.16s; margin-top:20px; gap:22px 40px">
+    <div class="card"><div class="idx">LAYER 1</div><h3>CLAUDE.md</h3><p>每次都載入的<b>事實</b>。要短，只放不會變的前提。</p></div>
+    <div class="card b"><div class="idx">LAYER 2</div><h3>Skill</h3><p>用到才載入的<b>流程</b>與參考資料。</p></div>
+    <div class="card"><div class="idx">LAYER 3</div><h3>MCP / Plugin</h3><p>外部<b>工具</b>接入。plugin 帶的 skill 另有管道。</p></div>
+    <div class="card b"><div class="idx">LAYER 4</div><h3>記憶機制</h3><p>跨對話留下來的東西。三個來源要分清楚。</p></div>
+  </div>
+</section>
+
+
+<!-- ── 事實 vs 流程 ───────────────────────── -->
+<section class="slide" data-sec="事實 vs 流程">
+  <div class="kicker b r">最容易放錯的一刀</div>
+  <div class="cols c-2 r" style="--d:.16s; margin-top:16px">
+    <div class="stack g16">
+      <span class="tag o">CLAUDE.md｜事實</span>
+      <p class="body">「我叫 Sasha」「這個外掛用 PSR-4」<br>——<b>每次都要知道、而且很短。</b></p>
+      <p class="note">放越多，每輪都在花錢背它。</p>
+    </div>
+    <div class="stack g16">
+      <span class="tag b">Skill｜流程</span>
+      <p class="body">「發版前，先跑 PHPCS 再打 tag」<br>——<b>用到那件事才需要載入。</b></p>
+      <p class="note">平常不佔 context，被叫用才進來。</p>
+    </div>
+  </div>
+  <p class="lead wide r" style="--d:.3s; margin-top:30px">判斷法：<b>這段話每次對話都要嗎？</b>不是，就別放 CLAUDE.md。</p>
+</section>
+
+
+<!-- ── MCP / Plugin ───────────────────────── -->
+<section class="slide" data-sec="MCP 與 Plugin">
+  <div class="kicker r">工具這一層有個陷阱</div>
+  <h1 class="r h1s" style="--d:.08s; margin-bottom:30px">plugin 帶進來的 skill，<br>不歸 <span class="hl">skillOverrides</span> 管。</h1>
+  <div class="cols c-2 r" style="--d:.2s">
+    <p class="body">你在 settings.json 裡關 skill 的那組開關，<b>對 plugin 的 skill 沒用。</b></p>
+    <div class="code r" style="--d:.28s">要管它，走　<span class="k">/plugin</span></div>
+  </div>
+  <p class="note r" style="--d:.36s; margin-top:34px">MCP 也一樣佔 context —— 沒在用的 server，直接從設定檔拿掉。</p>
+</section>
+
+
+<!-- ── Skill 存放位置 ─────────────────────── -->
+<section class="slide" data-sec="Skill 放哪裡">
+  <div class="kicker b r">同一個 skill，放的位置決定它的命</div>
+  <div class="cols c-2 r" style="--d:.16s; margin-top:16px">
+    <div class="stack g12">
+      <div class="code r"><span class="k">~/.claude/skills/</span></div>
+      <p class="body"><b>全域。</b>每個專案都吃得到，跟著你這台機器走。</p>
+      <p class="note">代價：所有專案都要分攤它的描述額度。</p>
+    </div>
+    <div class="stack g12">
+      <div class="code b r"><span class="b">.claude/skills/</span>（專案內）</div>
+      <p class="body"><b>跟著 repo 走、可以 commit。</b>換機器、換人接手都還在。</p>
+      <p class="note">只有這個專案會載入，不干擾別的案子。</p>
+    </div>
+  </div>
+  <p class="lead wide r" style="--d:.32s; margin-top:30px">只有一個客戶案在用的流程，<b>就該放專案裡。</b></p>
+</section>
+
+
+<!-- ── 記憶機制 ───────────────────────────── -->
+<section class="slide" data-sec="記憶的三個來源">
+  <div class="kicker r">記憶不是只有一種</div>
+  <div class="tri r" style="--d:.16s; margin-top:14px">
+    <div>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM8 9h8M8 13h5"/></svg></div>
+      <h3>CLAUDE.md</h3>
+      <p>你手寫的事實。永久、可版控、每次載入。</p>
+    </div>
+    <div>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9M12 7v5l3 2"/></svg></div>
+      <h3>auto memory</h3>
+      <p>Claude 自己記下的東西。方便，但要偶爾回頭看它記了什麼。</p>
+    </div>
+    <div>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6zM9 12h6M9 16h6"/></svg></div>
+      <h3>/memory</h3>
+      <p>手動編輯記憶內容的入口。要改、要刪就從這裡進去。</p>
+    </div>
+  </div>
+  <p class="note r" style="--d:.3s; margin-top:34px">記錯的記憶比沒有記憶更貴 —— <span class="hl">每個月看一次。</span></p>
+</section>
+
+
+<!-- ── WordPress 專案結構 ─────────────────── -->
+<section class="slide" data-sec="WordPress 專案的設定檔">
+  <div class="cols c-media" style="align-items:center">
+    <div class="code dark r" style="--d:.06s; font-size:16px; line-height:2.05">
+<span class="w">my-plugin/</span><br>
+├─ <span class="k">CLAUDE.md</span>　　　　<span class="c">專案事實：架構、規範</span><br>
+├─ <span class="w">.claude/</span><br>
+│　├─ <span class="k">settings.json</span>　<span class="c">可 commit，團隊共用</span><br>
+│　├─ <span class="w">settings.local.json</span>　<span class="c">個人，別進版控</span><br>
+│　├─ <span class="k">skills/</span>　　　　<span class="c">這個外掛專屬流程</span><br>
+│　├─ <span class="w">agents/</span>　　　　<span class="c">subagent 定義</span><br>
+│　└─ <span class="w">commands/</span>　　　<span class="c">斜線指令</span><br>
+└─ <span class="w">includes/</span> <span class="w">assets/</span> <span class="w">languages/</span>
+    </div>
+    <div class="stack g20">
+      <div class="kicker b r" style="--d:.14s">一句話原則</div>
+      <h1 class="r h1s" style="--d:.2s; font-size:42px">設定跟著<br>專案走，<br>不是跟著人走。</h1>
+      <p class="note r" style="--d:.3s">新人 clone 下來就有同一套規則。</p>
+    </div>
+  </div>
+</section>
+
+
+</div></div>
+<script src="assets/deck.js"></script>
+</body>
+</html>

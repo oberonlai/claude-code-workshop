@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UNIT 05 Skill 架構設計｜Claude Code 基礎教學與進階觀念</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body data-unit="05" data-unit-name="Skill 架構設計" data-prev="04-subagent-hook.html" data-next="06-parallel.html">
+<div id="viewport"><div id="stage">
+
+
+<!-- ── 休息 ───────────────────────────────── -->
+<section class="slide" data-sec="休息">
+  <div class="kicker r">中場</div>
+  <h1 class="r mega" style="--d:.08s; font-size:80px">休息 5 分鐘。</h1>
+  <p class="lead wide r" style="--d:.24s; margin-top:30px">回來就進今天的核心：<b>Skill 架構設計。</b></p>
+</section>
+
+
+<!-- ── 章節首頁（深珊瑚） ─────────────────── -->
+<section class="slide sec od" data-sec="Skill 架構設計">
+  <div class="ghostno">05</div>
+  <div class="secno r">SECTION 05 · 本堂核心</div>
+  <h1 class="r mega" style="--d:.12s">Skill 架構設計</h1>
+  <p class="lead r" style="--d:.24s; margin-top:22px">三層結構，用原生 frontmatter 就能做到。</p>
+</section>
+
+
+<!-- ── 三層結構 ───────────────────────────── -->
+<section class="slide" data-sec="三層結構">
+  <div class="cols c-media" style="align-items:center">
+    <div class="code dark r" style="--d:.06s; font-size:16px; line-height:2.1">
+<span class="c">--- SKILL.md frontmatter ---</span><br>
+<span class="w">name:</span> plugin-release<br>
+<span class="w">description:</span> 外掛發版流程<br>
+<span class="k">disable-model-invocation:</span> true　<span class="c">入口</span><br>
+<span class="k">context:</span> fork<br>
+<span class="k">agent:</span> releaser　　　　　　<span class="c">執行者</span><br>
+<span class="c">---</span><br>
+參考 <span class="w">checklist.md</span> / <span class="w">steps/*.md</span>　<span class="c">資料</span>
+    </div>
+    <div class="stack g16">
+      <div class="kicker b r" style="--d:.14s">三個角色</div>
+      <p class="body r" style="--d:.2s"><b>入口</b>　控制誰能啟動</p>
+      <p class="body r" style="--d:.26s"><b>執行者</b>　在哪裡跑</p>
+      <p class="body r" style="--d:.32s"><b>資料</b>　要用才讀</p>
+      <p class="note r" style="--d:.4s">這三層是獨立的，<br>可以只用其中一層。</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── 入口 ───────────────────────────────── -->
+<section class="slide" data-sec="第一層 · 入口">
+  <div class="kicker r">第一層 · 入口</div>
+  <div class="code dark r" style="--d:.08s; margin-bottom:26px; max-width:560px"><span class="k">disable-model-invocation:</span> <span class="w">true</span></div>
+  <h1 class="r h1s" style="--d:.16s">只有你能打 <span class="hl">/plugin-release</span>，<br>Claude 不會自作主張跑。</h1>
+  <p class="lead wide r" style="--d:.28s; margin-top:30px">危險或不可逆的流程，<b>手動觸發才安全。</b></p>
+  <p class="note r" style="--d:.36s; margin-top:22px">副作用：它不再佔用 skill listing 的描述額度。</p>
+</section>
+
+
+<!-- ── 執行者 ─────────────────────────────── -->
+<section class="slide" data-sec="第二層 · 執行者">
+  <div class="kicker b r">第二層 · 執行者</div>
+  <div class="code dark r" style="--d:.08s; margin-bottom:26px; max-width:620px"><span class="k">context:</span> <span class="w">fork</span>　　<span class="k">agent:</span> <span class="w">releaser</span></div>
+  <h1 class="r h1s" style="--d:.16s">在獨立 subagent 裡跑，<br>不佔主對話。</h1>
+  <p class="lead wide r" style="--d:.28s; margin-top:30px">長流程的雜訊留在 fork 裡，<b>主對話只收結果。</b></p>
+</section>
+
+
+<!-- ── 資料 ───────────────────────────────── -->
+<section class="slide" data-sec="第三層 · 資料">
+  <div class="kicker r">第三層 · 資料</div>
+  <h1 class="r h1s" style="--d:.08s; margin-bottom:28px">SKILL.md 只放導航，<br>細節引用外部檔。</h1>
+  <div class="pipe r" style="--d:.2s">
+    <div class="node o"><div class="t">SKILL.md</div><div class="s">階段導航 · 一直在</div></div>
+    <div class="arw"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+    <div class="node b"><div class="t">steps/03.md</div><div class="s">做到第三步才讀</div></div>
+    <div class="arw"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+    <div class="node b"><div class="t">checklist.md</div><div class="s">驗收時才讀</div></div>
+  </div>
+  <p class="lead wide r" style="--d:.32s; margin-top:38px">這叫<b>漸進式揭露</b>——用不到的段落，就不要花錢載進來。</p>
+</section>
+
+
+<!-- ── 抽 skill vs 附屬檔 ─────────────────── -->
+<section class="slide" data-sec="抽成 Skill 還是附屬檔">
+  <div class="kicker b r">最常被問的一題</div>
+  <div class="cols c-2 r" style="--d:.16s; margin-top:16px">
+    <div class="stack g16">
+      <span class="tag o">抽成獨立 Skill</span>
+      <p class="body">會<b>被別的流程叫到</b>，或你想單獨用 <span class="hl">/</span> 觸發它。</p>
+      <p class="note">例：「i18n 翻譯」兩個外掛都在用。</p>
+    </div>
+    <div class="stack g16">
+      <span class="tag b">做成附屬檔</span>
+      <p class="body">只有<b>這個流程的某一步</b>會讀，沒有獨立生命。</p>
+      <p class="note">例：發版第三步的 SVN 指令清單。</p>
+    </div>
+  </div>
+  <p class="lead wide r" style="--d:.3s; margin-top:30px">判斷法：<b>它會不會被第二個地方叫到？</b>不會，就是附屬檔。</p>
+</section>
+
+
+<!-- ── 瘦身與拆分 ─────────────────────────── -->
+<section class="slide" data-sec="SKILL.md 瘦身">
+  <div class="kicker r">動手改的時候，照這個順序</div>
+  <div class="steps r" style="--d:.16s">
+    <div class="it"><div class="no">1</div><div><div class="tx">把「事實」搬去 CLAUDE.md</div><div class="sb">專案架構、命名規範，不該擠在流程裡</div></div></div>
+    <div class="it b"><div class="no">2</div><div><div class="tx">把長範例搬去外部檔</div><div class="sb">整段程式碼、指令清單，留一行連結就好</div></div></div>
+    <div class="it"><div class="no">3</div><div><div class="tx">SKILL.md 只留階段與判斷點</div><div class="sb">看得出「現在在哪一步、下一步讀哪個檔」</div></div></div>
+    <div class="it b"><div class="no">4</div><div><div class="tx">重跑 <span class="hl b">/skill-doctor</span> 對照</div><div class="sb">數字有沒有真的降下來</div></div></div>
+  </div>
+  <p class="note r" style="--d:.3s; margin-top:26px">目標：SKILL.md 掃一眼就看完，其餘都在外面。</p>
+</section>
+
+
+<!-- ── 不可逆保護 ─────────────────────────── -->
+<section class="slide" data-sec="不可逆操作的保護">
+  <div class="kicker b r">上線、刪資料、推 production</div>
+  <div class="tri r" style="--d:.16s; margin-top:14px">
+    <div>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 11V8a6 6 0 0 1 12 0v3M5 11h14v10H5z"/></svg></div>
+      <h3>入口鎖死</h3>
+      <p><b>disable-model-invocation: true</b><br>只有你本人打得動。</p>
+    </div>
+    <div>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div>
+      <h3>工具限縮</h3>
+      <p><b>allowed-tools</b> 只開必要的幾個，不給它多餘的手。</p>
+    </div>
+    <div>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 4l9 16H3zM12 10v4M12 17h.01"/></svg></div>
+      <h3>Hook 把關</h3>
+      <p>PreToolUse 攔危險指令。<b>不靠模型自覺。</b></p>
+    </div>
+  </div>
+  <p class="lead wide r" style="--d:.3s; margin-top:34px">三層一起上。<b>任何一層單獨都不夠。</b></p>
+</section>
+
+
+</div></div>
+<script src="assets/deck.js"></script>
+</body>
+</html>

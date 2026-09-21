@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UNIT 06 平行任務｜Claude Code 基礎教學與進階觀念</title>
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body data-unit="06" data-unit-name="平行任務" data-prev="05-skill.html" data-next="07-practice.html">
+<div id="viewport"><div id="stage">
+
+
+<!-- ── 章節首頁（深靛） ───────────────────── -->
+<section class="slide sec bd" data-sec="平行任務">
+  <div class="ghostno">06</div>
+  <div class="secno r">SECTION 06</div>
+  <h1 class="r mega" style="--d:.12s">平行任務</h1>
+  <p class="lead r" style="--d:.24s; margin-top:22px">同一時間，開好幾條工作線。</p>
+</section>
+
+
+<!-- ── worktree 概念 ──────────────────────── -->
+<section class="slide" data-sec="git worktree">
+  <div class="cols c-media" style="align-items:center">
+    <div class="stack g20">
+      <div class="kicker r">概念</div>
+      <h1 class="r h1s" style="--d:.14s; font-size:46px">一個功能<br>一條工作區。</h1>
+      <p class="lead r" style="--d:.24s"><b>不用 stash、不用切分支。</b><br>三條各跑各的，互不打架。</p>
+      <div class="code r" style="--d:.34s; font-size:15px"><span class="k">git worktree add</span> ../feat-checkout feat/checkout</div>
+    </div>
+    <div class="r" style="--d:.3s; display:grid; place-items:center">
+      <svg viewBox="0 0 240 200" style="width:250px" aria-label="一個 repo 三條 worktree">
+        <rect x="86" y="82" width="68" height="36" rx="6" fill="none" stroke="#4B5A83" stroke-width="3"/>
+        <text x="120" y="105" text-anchor="middle" font-size="12" fill="#4B5A83" font-family="monospace">repo</text>
+        <g stroke="#D97757" stroke-width="3" fill="none">
+          <path d="M86 100H36v-40"/><path d="M120 82V36"/><path d="M154 100h50v-40"/>
+        </g>
+        <rect x="14" y="30" width="44" height="30" rx="5" fill="#D97757" opacity=".85"/>
+        <rect x="98" y="10" width="44" height="30" rx="5" fill="#D97757" opacity=".85"/>
+        <rect x="182" y="30" width="44" height="30" rx="5" fill="#D97757" opacity=".85"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── 對你的價值 ─────────────────────────── -->
+<section class="slide" data-sec="什麼時候才真的需要">
+  <div class="kicker b r">先確認需求，別為了用而用</div>
+  <h1 class="r h1s" style="--d:.08s; margin-bottom:24px">線性流水線<span class="hl">不需要</span> worktree，<br>硬開只是多開幾個視窗。</h1>
+  <div class="cols c-2 r" style="--d:.2s">
+    <div class="stack g12"><span class="tag o">真的有價值 ①</span><p class="body">同時服務<b>兩個客戶案</b>，兩條完全獨立。</p></div>
+    <div class="stack g12"><span class="tag b">真的有價值 ②</span><p class="body">同一個需求<b>做三版比較</b>，並排看哪個好。</p></div>
+  </div>
+  <p class="note r" style="--d:.32s; margin-top:34px">代價：每條 worktree 都要各自 <span class="hl">composer install</span> / <span class="hl">npm i</span>。</p>
+</section>
+
+
+<!-- ── goal 與排程 ────────────────────────── -->
+<section class="slide top" data-sec="goal 與排程指令" style="padding-top:76px">
+  <div class="kicker r">讓工作線自己跑下去</div>
+  <div class="steps r" style="--d:.16s">
+    <div class="it"><div class="no">1</div><div><div class="tx"><span class="hl">/goal</span>　設完成條件</div><div class="sb">每一輪獨立評估「達標了沒」，沒達標就繼續</div></div></div>
+    <div class="it b"><div class="no">2</div><div><div class="tx"><span class="hl b">/loop</span>　固定間隔重跑一件事</div><div class="sb">例：每 10 分鐘看一次 CI 過了沒</div></div></div>
+    <div class="it"><div class="no">3</div><div><div class="tx"><span class="hl">/schedule</span>　排定時任務</div><div class="sb">例：每週一早上整理上週的 session 紀錄</div></div></div>
+  </div>
+  <p class="lead wide r" style="--d:.3s; margin-top:32px">關鍵在<b>完成條件寫得夠具體</b>——寫不清楚，它會一直跑。</p>
+</section>
+
+
+<!-- ── dynamic workflow ───────────────────── -->
+<section class="slide" data-sec="dynamic workflow">
+  <div class="cols c-media" style="align-items:center">
+    <div class="stack g20">
+      <div class="kicker b r">再上一層</div>
+      <h1 class="r h1s" style="--d:.14s; font-size:44px">一支腳本，<br>調度一整批<br>subagent。</h1>
+      <p class="body r" style="--d:.24s">審查分六個面向同時跑，<br>每個面向的發現再各自丟去驗證。</p>
+    </div>
+    <div class="stack g12 r" style="--d:.3s">
+      <div class="code dark" style="font-size:15px; line-height:2">
+<span class="c">// 六個面向平行審，各自驗</span><br>
+<span class="k">pipeline</span>(DIMENSIONS,<br>
+　d =&gt; <span class="k">agent</span>(d.prompt),<br>
+　r =&gt; <span class="k">parallel</span>(r.findings.map(verify))<br>
+)
+      </div>
+      <p class="note">很貴。<b>要你明確開口才會跑，</b><br>不是日常工具。</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── 三層對照 ───────────────────────────── -->
+<section class="slide" data-sec="三種平行，怎麼選">
+  <div class="kicker r">由輕到重</div>
+  <div class="tri r" style="--d:.16s; margin-top:14px">
+    <div>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></div>
+      <h3>Subagent</h3>
+      <p>一次性的調查或驗證。<b>最常用，先從這個開始。</b></p>
+    </div>
+    <div>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3v18M18 3v18M6 9h12"/></svg></div>
+      <h3>Worktree</h3>
+      <p>兩件事真的無關、要同時進行。</p>
+    </div>
+    <div>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3"/></svg></div>
+      <h3>Workflow</h3>
+      <p>同一件事要從十幾個角度一起打。<b>少用。</b></p>
+    </div>
+  </div>
+</section>
+
+
+</div></div>
+<script src="assets/deck.js"></script>
+</body>
+</html>

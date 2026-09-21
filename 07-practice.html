@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UNIT 07 實作｜Claude Code 基礎教學與進階觀念</title>
+<link rel="stylesheet" href="assets/deck.css">
+<style>
+  .slide[data-sec="五個候選"] .steps .it{padding:11px 0;}
+  .slide[data-sec="五個候選"] .steps .tx{font-size:25px;}
+  .slide[data-sec="五個候選"] .steps .sb{font-size:18px; margin-top:3px;}
+</style>
+</head>
+<body data-unit="07" data-unit-name="實作" data-prev="06-parallel.html" data-next="index.html">
+<div id="viewport"><div id="stage">
+
+
+<!-- ── 章節首頁（珊瑚） ───────────────────── -->
+<section class="slide sec o" data-sec="實作">
+  <div class="ghostno">07</div>
+  <div class="secno r">SECTION 07</div>
+  <h1 class="r mega" style="--d:.12s">現場做一個。</h1>
+  <p class="lead r" style="--d:.24s; margin-top:22px">今天只做完一項，剩下的當課後練習。</p>
+</section>
+
+
+<!-- ── 從哪挑 ─────────────────────────────── -->
+<section class="slide" data-sec="從你自己的清單挑">
+  <div class="kicker b r">回到第一段那三堆</div>
+  <h1 class="r h1s" style="--d:.08s; margin-bottom:30px">挑<span class="hl">一項</span>，<br>不是挑三項。</h1>
+  <div class="quote r" style="--d:.2s; max-width:960px">
+    <p>做完一個能驗證的，<br>比開五個半成品有用。</p>
+  </div>
+</section>
+
+
+<!-- ── 候選清單 ───────────────────────────── -->
+<section class="slide top" data-sec="五個候選" style="padding-top:74px">
+  <div class="kicker r">沒想法的話，從這五個挑</div>
+  <div class="steps r" style="--d:.16s">
+    <div class="it"><div class="no">A</div><div><div class="tx">刪掉／關掉長期 0 次的 skill</div><div class="sb">最快，5 分鐘。馬上換到描述額度</div></div></div>
+    <div class="it b"><div class="no">B</div><div><div class="tx">把最肥的 SKILL.md 拆成導航 ＋ 外部檔</div><div class="sb">今天最推薦的一項，約 25 分鐘</div></div></div>
+    <div class="it"><div class="no">C</div><div><div class="tx">給不可逆流程加上 <span class="hl">disable-model-invocation</span></div><div class="sb">改一行 frontmatter，10 分鐘</div></div></div>
+    <div class="it b"><div class="no">D</div><div><div class="tx">寫一個 PostToolUse hook 跑 PHPCS</div><div class="sb">把記性換成機制，約 20 分鐘</div></div></div>
+    <div class="it"><div class="no">E</div><div><div class="tx">把專案常用的調查工作寫成 subagent</div><div class="sb">agents/ 底下一個 md 檔，15 分鐘</div></div></div>
+  </div>
+</section>
+
+
+<!-- ── 30 分鐘怎麼用 ──────────────────────── -->
+<section class="slide" data-sec="30 分鐘怎麼用">
+  <div class="kicker b r">現場的時間分配</div>
+  <div class="pipe r" style="--d:.16s; margin-top:10px">
+    <div class="node o"><div class="t">5 分</div><div class="s">選題 · 講出你要改什麼</div></div>
+    <div class="arw"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+    <div class="node b"><div class="t">20 分</div><div class="s">動手改</div></div>
+    <div class="arw"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+    <div class="node b"><div class="t">5 分</div><div class="s">驗證 · 數字有沒有變</div></div>
+  </div>
+  <p class="lead wide r" style="--d:.32s; margin-top:38px">卡住就舉手，<b>不要自己悶著查 20 分鐘。</b></p>
+</section>
+
+
+<!-- ── 驗收標準 ───────────────────────────── -->
+<section class="slide" data-sec="怎麼算做完">
+  <div class="kicker r">每一種改法，驗收方式不一樣</div>
+  <div class="tri r" style="--d:.16s; margin-top:14px">
+    <div>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+      <h3>改 Skill</h3>
+      <p>重跑 <b>/skill-doctor</b> 與 <b>/context</b>，數字要真的降。</p>
+    </div>
+    <div>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 4l9 16H3zM12 10v4M12 17h.01"/></svg></div>
+      <h3>加 Hook</h3>
+      <p>故意寫一段不合規的程式碼，<b>看它有沒有擋下來。</b></p>
+    </div>
+    <div>
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4"/></svg></div>
+      <h3>加 Subagent</h3>
+      <p>丟一個調查任務給它，<b>主對話的 context 有沒有省下來。</b></p>
+    </div>
+  </div>
+  <p class="note r" style="--d:.3s; margin-top:34px">沒驗證過的改動，<span class="hl">不算做完。</span></p>
+</section>
+
+
+<!-- ── 課後練習 ───────────────────────────── -->
+<section class="slide" data-sec="課後練習">
+  <div class="kicker b r">回去之後，照這個順序做</div>
+  <div class="steps r" style="--d:.16s">
+    <div class="it"><div class="no">1</div><div><div class="tx">這週內，把清單上其餘項目各做一項</div><div class="sb">一天一項就好，不要排在同一天</div></div></div>
+    <div class="it b"><div class="no">2</div><div><div class="tx">每做完一項，重跑一次 <span class="hl b">/skill-doctor</span></div><div class="sb">留著數字，下個月才知道有沒有退步</div></div></div>
+    <div class="it"><div class="no">3</div><div><div class="tx">一個月後再健檢一次</div><div class="sb">skill 會自己長回來，這是常態</div></div></div>
+  </div>
+</section>
+
+
+<!-- ── 收尾 ───────────────────────────────── -->
+<section class="slide" data-sec="帶走這句">
+  <div class="quote r" style="--d:.1s; max-width:1000px">
+    <p>能寫進 <b>prompt</b> 的是建議，<br>能寫進 <b>設定</b> 的才是規則。</p>
+  </div>
+  <div class="rule short r" style="--d:.24s; margin:34px 0"></div>
+  <div class="note r" style="--d:.3s">OBERON LAI &nbsp;·&nbsp; 想點創意科技 CODOTX &nbsp;·&nbsp; 按 <span class="hl">Space</span> 回目錄</div>
+</section>
+
+
+</div></div>
+<script src="assets/deck.js"></script>
+</body>
+</html>
