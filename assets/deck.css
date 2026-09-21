@@ -84,12 +84,20 @@ body{
 }
 .eyebrow-slot .u{color:var(--blogger-deep);}
 
-/* 每張投影片的主軸：比 UNIT 標籤大一級，直接看得出這頁在講什麼。 */
-.eyebrow-slot #ebSec{
-  font-family:var(--sans); font-size:21px; font-weight:700;
-  letter-spacing:.01em; text-transform:none; color:var(--ink);
+/* 每張投影片的主軸標題：放在版面內，不是角落的小字。 */
+#slidehead{
+  position:absolute; left:82px; top:46px; z-index:50;
+  display:flex; align-items:center; gap:14px;
+  opacity:0; transition:opacity .35s ease; pointer-events:none;
 }
-#stage:has(.slide.sec.in) .eyebrow-slot #ebSec{color:rgba(255,255,255,.92);}
+#slidehead.on{opacity:1;}
+/* 版面內已有主軸標題時，角落眉標只留 UNIT 編號，不重複。 */
+#stage:has(#slidehead.on) .eyebrow-slot > span:not(.u){display:none;}
+#slidehead::after{content:""; width:56px; height:2px; background:var(--blogger); opacity:.55;}
+#shTitle{
+  font-family:var(--sans); font-size:27px; font-weight:700;
+  color:var(--ink); letter-spacing:.01em; line-height:1.25; white-space:nowrap;
+}
 
 #pageno{
   position:absolute; right:54px; bottom:17px; z-index:60;

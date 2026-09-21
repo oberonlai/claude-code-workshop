@@ -43,6 +43,7 @@ chrome.innerHTML =
     (UNIT ? '<span class="u">UNIT ' + UNIT + '</span><span>·</span>' : '') +
     '<span id="ebSec"></span>' +
   '</div>' +
+  '<div id="slidehead"><span id="shTitle"></span></div>' +
   '<div id="pageno"><span id="pnCur">01</span> / <span id="pnAll">01</span></div>' +
   '<div id="railwrap"><div id="rail"></div></div>' +
   '<div id="nav">' +
@@ -405,6 +406,7 @@ function runTerm(el){
 var slides = $$('.slide');
 var cur = 0, step = 0, moving = false;
 var ebSec = $('#ebSec'), pnCur = $('#pnCur'), pnAll = $('#pnAll'), rail = $('#rail');
+var shTitle = $('#shTitle'), slideHead = $('#slidehead');
 
 pnAll.textContent = String(slides.length).padStart(2,'0');
 slides.forEach(function(s){ s.hidden = true; });
@@ -453,6 +455,9 @@ function writeHash(){
 function enter(s){
   writeHash();
   ebSec.textContent = s.dataset.sec || UNAME;
+  /* 頁面標題：章節首頁自己有大標，其餘每張都在版面內標出這頁的主軸。 */
+  shTitle.textContent = s.dataset.sec || '';
+  slideHead.classList.toggle('on', !s.classList.contains('sec') && !!s.dataset.sec);
   pnCur.textContent = String(cur+1).padStart(2,'0');
   rail.style.width = (slides.length > 1 ? cur/(slides.length-1)*100 : 100) + '%';
 
