@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>UNIT 02 基本觀念與環境｜Claude Code 基礎教學與進階觀念</title>
 <link rel="stylesheet" href="assets/deck.css">
+<style>
+  .slide[data-sec="四層分工"] .steps .it{padding:13px 0;}
+  .slide[data-sec="四層分工"] .steps .sb{margin-top:4px;}
+</style>
 </head>
 <body data-unit="02" data-unit-name="基本觀念與環境" data-prev="01-checkup.html" data-next="03-session.html" data-home="toc.html">
 <div id="viewport"><div id="stage">
@@ -14,40 +18,42 @@
 <section class="slide sec o" data-sec="基本觀念與環境">
   <div class="ghostno">02</div>
   <div class="secno r">SECTION 02</div>
-  <h1 class="r mega" style="--d:.12s">基本觀念<br>與環境</h1>
+  <h1 class="r mega" style="--d:.12s; font-size:80px">基本觀念與環境</h1>
   <p class="lead r" style="--d:.24s; margin-top:22px">CLAUDE.md、Skill、MCP、Plugin<br>各管什麼，設定檔又該放哪。</p>
 </section>
 
 
 <!-- ── 四層分工 ───────────────────────────── -->
 <section class="slide" data-sec="四層分工">
-  <div class="kicker r">Claude 的知識分四層放</div>
-  <div class="cols c-2 r" style="--d:.16s; margin-top:20px; gap:22px 40px">
-    <div class="card"><div class="idx">LAYER 1</div><h3>CLAUDE.md</h3><p>每次都載入的<b>事實</b>。要短，只放不會變的前提。</p></div>
-    <div class="card b"><div class="idx">LAYER 2</div><h3>Skill</h3><p>用到才載入的<b>流程</b>與參考資料。</p></div>
-    <div class="card"><div class="idx">LAYER 3</div><h3>MCP / Plugin</h3><p>外部<b>工具</b>接入。用得到才裝，沒在用就拿掉。</p></div>
-    <div class="card b"><div class="idx">LAYER 4</div><h3>記憶機制</h3><p>跨對話留下來的東西。三個來源要分清楚。</p></div>
+  <div class="kicker r">這一段的地圖：Claude 的知識分四層放</div>
+  <div class="steps r" style="--d:.16s; margin-top:18px">
+    <div class="it"><div class="no">L1</div><div><div class="tx">CLAUDE.md</div><div class="sb">每次都載入的<b>事實</b>。要短，只放不會變的前提</div></div></div>
+    <div class="it b"><div class="no">L2</div><div><div class="tx">Skill</div><div class="sb">用到才載入的<b>流程</b>與參考資料</div></div></div>
+    <div class="it"><div class="no">L3</div><div><div class="tx">MCP / Plugin</div><div class="sb">外部<b>工具</b>接入。用得到才裝，沒在用就拿掉</div></div></div>
+    <div class="it b"><div class="no">L4</div><div><div class="tx">記憶機制</div><div class="sb">跨對話留下來的東西，三個來源要分清楚</div></div></div>
   </div>
 </section>
 
 
 <!-- ── 事實 vs 流程 ───────────────────────── -->
 <section class="slide" data-sec="事實 vs 流程">
-  <div class="kicker b r">最容易放錯的一刀</div>
-  <div class="cols c-2 r" style="--d:.16s; margin-top:16px">
+  <div class="kicker r">最容易放錯的一刀</div>
+
+  <div class="cols c-2 r" style="--d:.16s; margin-top:20px; gap:44px">
     <div class="stack g16">
-      <span class="tag o">CLAUDE.md｜事實</span>
-      <p class="body">「我叫小賴」「所有回覆用繁體中文」<br>——<b>每次都要知道、而且很短。</b></p>
+      <div class="code dark" style="font-size:30px; padding:20px 26px"><span class="k">CLAUDE.md</span><span class="c"> 事實</span></div>
+      <p class="body" style="font-size:23px">「我叫小賴」「所有回覆用繁體中文」<br><b>每次都要知道，而且很短。</b></p>
       <p class="note">放越多，每輪都在花錢背它。</p>
     </div>
     <div class="stack g16">
-      <span class="tag b">Skill｜流程</span>
-      <p class="body">「先幫我清查老站的文章有哪些類型」<br>——<b>用到那件事才需要載入。</b></p>
+      <div class="code dark" style="font-size:30px; padding:20px 26px"><span style="color:#9FB6E8">Skill</span><span class="c"> 流程</span></div>
+      <p class="body" style="font-size:23px">「先幫我清查老站的文章有哪些類型」<br><b>用到那件事才需要載入。</b></p>
       <p class="note">平常不佔 context，被叫用才進來。</p>
     </div>
   </div>
-  <div class="quote r" style="--d:.3s; margin-top:32px">
-    <p style="font-size:27px">判斷法：<b>這段話每次對話都要嗎？</b>不是，就別放 CLAUDE.md。</p>
+
+  <div class="quote r" style="--d:.32s; margin-top:30px">
+    <p style="font-size:26px">判斷法：<b>這段話每次對話都要嗎？</b>不是，就別放 CLAUDE.md。</p>
   </div>
 </section>
 
@@ -57,20 +63,22 @@
 <!-- ── Skill 存放位置 ─────────────────────── -->
 <section class="slide" data-sec="Skill 放哪裡">
   <div class="kicker b r">同一個 skill，放的位置決定它的命</div>
-  <div class="cols c-2 r" style="--d:.16s; margin-top:16px">
-    <div class="stack g12">
-      <div class="code r"><span class="k">~/.claude/skills/</span></div>
-      <p class="body"><b>全域。</b>每個專案都吃得到，跟著你這台機器走。</p>
+
+  <div class="cols c-2 r" style="--d:.16s; margin-top:20px; gap:44px">
+    <div class="stack g16">
+      <div class="code dark" style="font-size:26px; padding:20px 24px"><span class="k">~/.claude/skills/</span></div>
+      <p class="body" style="font-size:23px"><b>全域。</b>每個專案都吃得到，跟著你這台機器走。</p>
       <p class="note">代價：所有專案都要分攤它的描述額度。</p>
     </div>
-    <div class="stack g12">
-      <div class="code b r"><span class="b">.claude/skills/</span>（專案內）</div>
-      <p class="body"><b>跟著 repo 走、可以 commit。</b>換機器、換人接手都還在。</p>
+    <div class="stack g16">
+      <div class="code dark" style="font-size:26px; padding:20px 24px"><span style="color:#9FB6E8">.claude/skills/</span></div>
+      <p class="body" style="font-size:23px"><b>專案內。</b>跟著 repo 走、可以 commit。</p>
       <p class="note">只有這個專案會載入，不干擾別的案子。</p>
     </div>
   </div>
-  <div class="quote r" style="--d:.32s; margin-top:32px">
-    <p style="font-size:27px">只有一個客戶案在用的流程，<b>就該放專案裡。</b></p>
+
+  <div class="quote r" style="--d:.32s; margin-top:30px">
+    <p style="font-size:26px">只有一個客戶案在用的流程，<b>就該放專案裡。</b></p>
   </div>
 </section>
 

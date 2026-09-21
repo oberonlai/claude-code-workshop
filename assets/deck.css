@@ -39,7 +39,7 @@
   --fs-h2:   42px;
   --fs-lead: 29px;
   --fs-body: 24px;
-  --fs-note: 17px;
+  --fs-note: 18px;
   --fs-eye:  15px;
 }
 
@@ -247,7 +247,7 @@ p{margin:0; line-height:1.8;}
 .card .idx{font-family:var(--mono); font-size:13px; letter-spacing:.18em; color:var(--blogger-deep);}
 .card.b .idx{color:var(--wp-deep);}
 .card h3{font-size:27px; font-family:var(--sans); font-weight:700;}
-.card p{font-size:19px; color:var(--mute); line-height:1.8; font-weight:300;}
+.card p{font-size:21px; color:var(--mute); line-height:1.8; font-weight:300;}
 
 /* 大數字 */
 .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:0;}
@@ -264,7 +264,7 @@ p{margin:0; line-height:1.8;}
 .tri .ico{width:44px;height:44px; display:grid; place-items:center; border:1px solid var(--wp); border-radius:5px;}
 .tri .ico svg{width:22px;height:22px;stroke:var(--wp); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;}
 .tri h3{font-family:var(--sans); font-size:23px; font-weight:700; color:var(--ink);}
-.tri p{font-size:18px; color:var(--mute); line-height:1.8; font-weight:300;}
+.tri p{font-size:20px; color:var(--mute); line-height:1.8; font-weight:300;}
 
 /* ── Gmail 收件匣模擬 ───────────────────────── */
 .gmail{
@@ -335,7 +335,7 @@ p{margin:0; line-height:1.8;}
 .steps .no{font-family:var(--mono); font-size:19px; font-weight:700; color:var(--blogger-deep); flex:0 0 42px; padding-top:6px;}
 .steps .it.b .no{color:var(--wp-deep);}
 .steps .tx{font-size:28px; font-weight:500; line-height:1.5;}
-.steps .sb{font-size:19px; color:var(--mute); font-weight:300; margin-top:6px; line-height:1.7;}
+.steps .sb{font-size:20px; color:var(--mute); font-weight:300; margin-top:6px; line-height:1.7;}
 
 /* ── 程式碼／終端機 ─────────────────────────── */
 .code{background:#fff; border:1px solid var(--line-2); border-radius:4px;

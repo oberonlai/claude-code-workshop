@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>UNIT 01 使用健檢｜Claude Code 基礎教學與進階觀念</title>
 <link rel="stylesheet" href="assets/deck.css">
-<style>
-  .slide[data-sec="今天要走的路"] .steps .it{padding:12px 0;}
-  .slide[data-sec="今天要走的路"] .steps .sb{margin-top:3px;}
-</style>
 </head>
 <body data-unit="01" data-unit-name="使用健檢" data-prev="toc.html" data-home="toc.html" data-next="02-basics.html">
 <div id="viewport"><div id="stage">
@@ -16,21 +12,13 @@
 
 <!-- ── 封面 ───────────────────────────────── -->
 <!-- ── 今天要走的路 ───────────────────────── -->
-<section class="slide top" data-sec="今天要走的路" style="padding-top:70px">
-  <div class="kicker b r">兩小時，七段</div>
-  <h1 class="r h1s" style="--d:.08s; font-size:38px; margin-bottom:16px">量完再分工，<br>最後現場動手做一個。</h1>
-  <div class="cols c-2 r" style="--d:.18s; gap:0 48px">
-    <div class="steps">
-      <div class="it"><div class="no">01</div><div><div class="tx" style="font-size:24px">使用健檢</div><div class="sb" style="font-size:17px">哪些 skill 真的在跑</div></div></div>
-      <div class="it b"><div class="no">02</div><div><div class="tx" style="font-size:24px">基本觀念與環境</div><div class="sb" style="font-size:17px">四層分工與存放位置</div></div></div>
-      <div class="it"><div class="no">03</div><div><div class="tx" style="font-size:24px">Session 管理</div><div class="sb" style="font-size:17px">rewind、跨 session、context</div></div></div>
-      <div class="it b"><div class="no">04</div><div><div class="tx" style="font-size:24px">Subagent 與 Hook</div><div class="sb" style="font-size:17px">省空間，以及擋得住的規則</div></div></div>
-    </div>
-    <div class="steps">
-      <div class="it"><div class="no">05</div><div><div class="tx" style="font-size:24px">Skill 架構設計 <span class="hl">· 核心</span></div><div class="sb" style="font-size:17px">入口 → 執行者 → 資料</div></div></div>
-      <div class="it b"><div class="no">06</div><div><div class="tx" style="font-size:24px">平行任務</div><div class="sb" style="font-size:17px">worktree、排程、workflow</div></div></div>
-      <div class="it"><div class="no">07</div><div><div class="tx" style="font-size:24px">實作</div><div class="sb" style="font-size:17px">挑一項現場完成並驗證</div></div></div>
-    </div>
+<section class="slide" data-sec="今天要走的路">
+  <div class="kicker b r">兩小時，三個階段</div>
+  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:32px">量完再分工，最後現場動手做一個。</h1>
+  <div class="steps r" style="--d:.18s">
+    <div class="it"><div class="no">01</div><div><div class="tx">先量</div><div class="sb">使用健檢 —— 哪些 skill 真的在跑、哪些只是佔 context</div></div></div>
+    <div class="it b"><div class="no">02</div><div><div class="tx">再分工</div><div class="sb">觀念與環境、Session 管理、Subagent 與 Hook、Skill 架構</div></div></div>
+    <div class="it"><div class="no">03</div><div><div class="tx">最後動手</div><div class="sb">平行任務，然後挑一項現場做完並驗證</div></div></div>
   </div>
 </section>
 
@@ -80,7 +68,7 @@
 <!-- ── 換你跑一次 ─────────────────────────── -->
 <section class="slide" data-sec="換你跑一次">
   <div class="kicker b r">現在打開你自己的 Claude Code</div>
-  <h1 class="r h1s" style="--d:.08s; font-size:40px; margin-bottom:18px">兩行指令，<br>我陪你一起看。</h1>
+  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:26px">兩行指令，我陪你一起看。</h1>
   <div class="steps r" style="--d:.18s">
     <div class="it"><div class="no">1</div><div><div class="tx">打 <span class="hl">/skill-doctor</span></div><div class="sb">把畫面停著，先找出次數是 0 的那幾個</div></div></div>
     <div class="it b"><div class="no">2</div><div><div class="tx">打 <span class="hl b">/context</span></div><div class="sb">看總用量，以及 Skills 與 MCP 各佔多少</div></div></div>

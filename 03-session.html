@@ -36,7 +36,7 @@
   <div class="cols c-media" style="align-items:center">
     <div class="stack g20">
       <div class="kicker b r">改壞了怎麼辦</div>
-      <h1 class="r h1s" style="--d:.14s; font-size:48px">對話自己<br>能倒帶。</h1>
+      <h1 class="r h1s" style="--d:.14s; font-size:48px">對話自己能倒帶。</h1>
       <p class="body r" style="--d:.24s">Claude Code 會在每次改檔前存一個 <b>checkpoint</b>。<br><span class="hl">Esc Esc</span> 或 <span class="hl">/rewind</span> 挑一個點回去。</p>
     </div>
     <div class="stack g12 r" style="--d:.3s">
@@ -74,7 +74,7 @@
 <!-- ── context 觀察 ───────────────────────── -->
 <section class="slide" data-sec="context 要盯著看">
   <div class="kicker b r">先看數字，再決定動作</div>
-  <h1 class="r h1s" style="--d:.08s; margin-bottom:30px">context 滿了不會停，<br>它會<span class="hl">自己砍掉前面</span>。</h1>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:32px">context 滿了不會停，它會<span class="hl">自己砍掉前面</span>。</h1>
   <div class="pipe r" style="--d:.2s">
     <div class="node o"><div class="t">70% 以下</div><div class="s">正常做事</div></div>
     <div class="arw"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
@@ -111,21 +111,20 @@
 
 <!-- ── output style ───────────────────────── -->
 <section class="slide" data-sec="output style">
-  <div class="cols c-media" style="align-items:center">
-    <div class="stack g20">
-      <div class="kicker b r">改的是「怎麼講」</div>
-      <h1 class="r h1s" style="--d:.14s; font-size:44px">同一個答案，<br>可以有不同<br>講法。</h1>
-      <p class="body r" style="--d:.24s">打 <span class="hl">/output-style</span> 切換，<br>也可以自己寫一份存起來重複用。</p>
-    </div>
-    <div class="stack g12 r" style="--d:.3s">
-      <div class="code dark" style="font-size:16px; line-height:2">
+  <div class="kicker b r">改的是「怎麼講」</div>
+  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:30px">同一個答案，可以有不同講法。</h1>
+
+  <div class="cols r" style="--d:.2s; grid-template-columns:1.15fr .85fr; gap:44px; align-items:center">
+    <div class="code dark" style="font-size:17px; line-height:2.1">
 <span class="c">~/.claude/output-styles/teaching.md</span><br>
 <span class="k">---</span><br>
 <span class="k">name:</span> <span class="w">teaching</span><br>
 <span class="k">description:</span> <span class="w">邊做邊解釋，給學員看</span><br>
 <span class="k">---</span><br>
 <span class="w">每改一個檔案，先講一句為什麼要改。</span>
-      </div>
+    </div>
+    <div class="stack g16">
+      <p class="body" style="font-size:23px">打 <span class="hl">/output-style</span> 切換，<br>也可以自己寫一份存起來重複用。</p>
       <p class="note">它改的是回話風格，<br>不是能力，也不是權限。</p>
     </div>
   </div>

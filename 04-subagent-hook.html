@@ -14,7 +14,7 @@
 <section class="slide sec k" data-sec="Subagent 與 Hook">
   <div class="ghostno">04</div>
   <div class="secno r">SECTION 04</div>
-  <h1 class="r mega" style="--d:.12s">Subagent<br>與 Hook</h1>
+  <h1 class="r mega" style="--d:.12s; font-size:80px">Subagent 與 Hook</h1>
   <p class="lead r" style="--d:.24s; margin-top:22px">一個管 context，一個管「一定要做」。</p>
 </section>
 
@@ -22,17 +22,21 @@
 <!-- ── 兩件事分清楚 ───────────────────────── -->
 <section class="slide" data-sec="兩件事，別混">
   <div class="kicker r">這一段講兩個工具，解的是不同的痛</div>
-  <div class="cols c-2 r" style="--d:.16s; margin-top:16px">
+
+  <div class="cols c-2 r" style="--d:.16s; margin-top:20px; gap:44px">
     <div class="stack g16">
-      <span class="tag o">Subagent</span>
-      <p class="body">解的是<b>「context 被塞爆」</b>。<br>調查、翻檔案、跑測試的雜訊，留在別的地方。</p>
+      <div class="code dark" style="font-size:32px; padding:20px 26px"><span class="k">Subagent</span></div>
+      <p class="body" style="font-size:23px">解的是<b>「context 被塞爆」。</b><br>調查、翻檔案、跑測試的雜訊，留在別的地方。</p>
     </div>
     <div class="stack g16">
-      <span class="tag b">Hook</span>
-      <p class="body">解的是<b>「模型會跳過」</b>。<br>不靠自覺，由外面的程式強制執行。</p>
+      <div class="code dark" style="font-size:32px; padding:20px 26px"><span style="color:#9FB6E8">Hook</span></div>
+      <p class="body" style="font-size:23px">解的是<b>「模型會跳過」。</b><br>不靠自覺，由外面的程式強制執行。</p>
     </div>
   </div>
-  <p class="lead wide r" style="--d:.3s; margin-top:34px">記法：<b>subagent 省空間，hook 保證做。</b></p>
+
+  <div class="quote r" style="--d:.32s; margin-top:30px">
+    <p style="font-size:26px">記法：<b>subagent 省空間，hook 保證做。</b></p>
+  </div>
 </section>
 
 
@@ -76,7 +80,7 @@
 <!-- ── Hook 的問題起點 ────────────────────── -->
 <section class="slide" data-sec="為什麼需要 Hook">
   <div class="kicker r">你在 SKILL.md 裡寫的那些「務必」</div>
-  <h1 class="r h1s" style="--d:.08s; margin-bottom:26px">寫在 prompt 裡的規則，<br>本質都是<span class="hl">建議</span>。</h1>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">寫在 prompt 裡的規則，本質都是<span class="hl">建議</span>。</h1>
   <div class="quote r" style="--d:.2s; border-left-color:#B85C3C; max-width:960px">
     <p style="font-size:25px">「改完 PHP 一定要跑 PHPCS」——<br><b>九次會做，第十次趕時間就跳過了。</b></p>
   </div>

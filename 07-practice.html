@@ -5,11 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>UNIT 07 實作｜Claude Code 基礎教學與進階觀念</title>
 <link rel="stylesheet" href="assets/deck.css">
-<style>
-  .slide[data-sec="五個候選"] .steps .it{padding:11px 0;}
-  .slide[data-sec="五個候選"] .steps .tx{font-size:25px;}
-  .slide[data-sec="五個候選"] .steps .sb{font-size:18px; margin-top:3px;}
-</style>
 </head>
 <body data-unit="07" data-unit-name="實作" data-prev="06-parallel.html" data-next="toc.html" data-home="toc.html">
 <div id="viewport"><div id="stage">
@@ -27,7 +22,7 @@
 <!-- ── 從哪挑 ─────────────────────────────── -->
 <section class="slide" data-sec="從你自己的清單挑">
   <div class="kicker b r">回到第一段那三堆</div>
-  <h1 class="r h1s" style="--d:.08s; margin-bottom:30px">挑<span class="hl">一項</span>，<br>不是挑三項。</h1>
+  <h1 class="r h1s" style="--d:.08s; margin-bottom:32px">挑<span class="hl">一項</span>，不是挑三項。</h1>
   <div class="quote r" style="--d:.2s; max-width:960px">
     <p>做完一個能驗證的，<br>比開五個半成品有用。</p>
   </div>
@@ -35,15 +30,14 @@
 
 
 <!-- ── 候選清單 ───────────────────────────── -->
-<section class="slide top" data-sec="五個候選" style="padding-top:74px">
-  <div class="kicker r">沒想法的話，從這五個挑</div>
-  <div class="steps r" style="--d:.16s">
-    <div class="it"><div class="no">A</div><div><div class="tx">刪掉／關掉長期 0 次的 skill</div><div class="sb">最快，5 分鐘。馬上換到描述額度</div></div></div>
+<section class="slide" data-sec="三個候選">
+  <div class="kicker r">沒想法的話，從這三個挑</div>
+  <div class="steps r" style="--d:.16s; margin-top:16px">
+    <div class="it"><div class="no">A</div><div><div class="tx">刪掉／關掉長期 0 次的 skill</div><div class="sb">最快，5 分鐘。馬上換回描述額度</div></div></div>
     <div class="it b"><div class="no">B</div><div><div class="tx">把最肥的 SKILL.md 拆成導航 ＋ 外部檔</div><div class="sb">今天最推薦的一項，約 25 分鐘</div></div></div>
-    <div class="it"><div class="no">C</div><div><div class="tx">給不可逆流程加上 <span class="hl">disable-model-invocation</span></div><div class="sb">改一行 frontmatter，10 分鐘</div></div></div>
-    <div class="it b"><div class="no">D</div><div><div class="tx">寫一個 PostToolUse hook 跑 PHPCS</div><div class="sb">把記性換成機制，約 20 分鐘</div></div></div>
-    <div class="it"><div class="no">E</div><div><div class="tx">把專案常用的調查工作寫成 subagent</div><div class="sb">agents/ 底下一個 md 檔，15 分鐘</div></div></div>
+    <div class="it"><div class="no">C</div><div><div class="tx">寫一個 PostToolUse hook 跑 PHPCS</div><div class="sb">把記性換成機制，約 20 分鐘</div></div></div>
   </div>
+  <p class="note r" style="--d:.3s; margin-top:26px">其他想改的（<span class="hl">disable-model-invocation</span>、subagent）留到課後練習。</p>
 </section>
 
 

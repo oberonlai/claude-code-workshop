@@ -24,7 +24,7 @@
   <div class="cols c-media" style="align-items:center">
     <div class="stack g20">
       <div class="kicker r">概念</div>
-      <h1 class="r h1s" style="--d:.14s; font-size:46px">一個功能<br>一條工作區。</h1>
+      <h1 class="r h1s" style="--d:.14s; font-size:44px">一個功能一條工作區。</h1>
       <p class="lead r" style="--d:.24s"><b>不用 stash、不用切分支。</b><br>三條各跑各的，互不打架。</p>
       <div class="code r" style="--d:.34s; font-size:15px"><span class="k">git worktree add</span> ../feat-checkout feat/checkout</div>
     </div>
@@ -47,12 +47,14 @@
 <!-- ── 對你的價值 ─────────────────────────── -->
 <section class="slide" data-sec="什麼時候才真的需要">
   <div class="kicker b r">先確認需求，別為了用而用</div>
-  <h1 class="r h1s" style="--d:.08s; margin-bottom:24px">線性流水線<span class="hl">不需要</span> worktree，<br>硬開只是多開幾個視窗。</h1>
-  <div class="cols c-2 r" style="--d:.2s">
-    <div class="stack g12"><span class="tag o">真的有價值 ①</span><p class="body">同時服務<b>兩個客戶案</b>，兩條完全獨立。</p></div>
-    <div class="stack g12"><span class="tag b">真的有價值 ②</span><p class="body">同一個需求<b>做三版比較</b>，並排看哪個好。</p></div>
+  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:28px">線性流水線<span class="hl">不需要</span> worktree，硬開只是多開幾個視窗。</h1>
+
+  <div class="cols c-2 r" style="--d:.2s; gap:40px">
+    <div class="card"><div class="idx">真的有價值 01</div><h3 style="font-size:29px">兩個客戶案同時跑</h3><p style="font-size:21px">兩條完全獨立，互不影響。</p></div>
+    <div class="card b"><div class="idx">真的有價值 02</div><h3 style="font-size:29px">同一需求做三版</h3><p style="font-size:21px">並排比較，挑最好的那一版。</p></div>
   </div>
-  <p class="note r" style="--d:.32s; margin-top:34px">代價：每條 worktree 都要各自 <span class="hl">composer install</span> / <span class="hl">npm i</span>。</p>
+
+  <p class="note r" style="--d:.34s; margin-top:26px">代價：每條 worktree 都要各自 <span class="hl">composer install</span> / <span class="hl">npm i</span>。</p>
 </section>
 
 
@@ -70,21 +72,20 @@
 
 <!-- ── dynamic workflow ───────────────────── -->
 <section class="slide" data-sec="dynamic workflow">
-  <div class="cols c-media" style="align-items:center">
-    <div class="stack g20">
-      <div class="kicker b r">再上一層</div>
-      <h1 class="r h1s" style="--d:.14s; font-size:44px">一支腳本，<br>調度一整批<br>subagent。</h1>
-      <p class="body r" style="--d:.24s">審查分六個面向同時跑，<br>每個面向的發現再各自丟去驗證。</p>
-    </div>
-    <div class="stack g12 r" style="--d:.3s">
-      <div class="code dark" style="font-size:15px; line-height:2">
+  <div class="kicker b r">再上一層</div>
+  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:30px">一支腳本，調度一整批 subagent。</h1>
+
+  <div class="cols r" style="--d:.2s; grid-template-columns:1.1fr .9fr; gap:44px; align-items:center">
+    <div class="code dark" style="font-size:17px; line-height:2.1">
 <span class="c">// 六個面向平行審，各自驗</span><br>
 <span class="k">pipeline</span>(DIMENSIONS,<br>
 　d =&gt; <span class="k">agent</span>(d.prompt),<br>
 　r =&gt; <span class="k">parallel</span>(r.findings.map(verify))<br>
 )
-      </div>
-      <p class="note">很貴。<b>要你明確開口才會跑，</b><br>不是日常工具。</p>
+    </div>
+    <div class="stack g16">
+      <p class="body" style="font-size:23px">審查分六個面向同時跑，<br>每個面向的發現再各自丟去驗證。</p>
+      <p class="note">很貴。<span class="hl">要你明確開口才會跑，</span><br>不是日常工具。</p>
     </div>
   </div>
 </section>
