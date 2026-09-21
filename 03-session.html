@@ -55,16 +55,18 @@
 <!-- ── @ 提及其他 session ─────────────────── -->
 <section class="slide" data-sec="跨 session 傳訊息">
   <div class="kicker r">兩條線要對話的時候</div>
-  <h1 class="r h1s" style="--d:.08s; margin-bottom:28px">用 <span class="hl">@</span> 點名另一個 session，<br>把問題丟過去。</h1>
-  <div class="cols c-2 r" style="--d:.2s">
-    <div class="stack g12">
-      <div class="code dark"><span class="k">@api-refactor</span> <span class="w">你那邊的 endpoint 定案了嗎？</span></div>
-      <p class="note">訊息會送進那個 session，它回完你再繼續。</p>
-    </div>
-    <div class="stack g12">
-      <span class="tag b">典型用法</span>
-      <p class="body">前端那條等後端定 schema —— <b>不用自己複製貼上轉述。</b></p>
-    </div>
+  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:28px">用 <span class="hl">@</span> 點名另一個 session，把問題丟過去。</h1>
+
+  <div class="code dark r" style="--d:.18s; font-size:17px; line-height:2.2">
+<span class="c">// 你在 frontend 這條，需要後端先定案</span><br>
+<span class="k">@api-refactor</span> <span class="w">你那邊的 endpoint 定案了嗎？</span><br>
+<br>
+<span class="c">// 訊息直接送進那條 session，它回完你再繼續</span><br>
+<span class="w">POST /v1/orders，欄位清單我寫在 docs/api.md</span>
+  </div>
+
+  <div class="quote r" style="--d:.3s; margin-top:28px">
+    <p style="font-size:26px">不用自己在兩個視窗之間<b>複製貼上轉述。</b></p>
   </div>
 </section>
 
