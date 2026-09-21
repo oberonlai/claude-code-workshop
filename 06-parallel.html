@@ -9,92 +9,64 @@
 <body data-unit="06" data-unit-name="平行任務" data-prev="05-skill.html" data-next="toc.html" data-home="toc.html">
 <div id="viewport"><div id="stage">
 
-
-<!-- ── 章節首頁（深靛） ───────────────────── -->
 <section class="slide sec bd" data-sec="平行任務">
   <div class="ghostno">06</div>
   <div class="secno r">SECTION 06</div>
   <h1 class="r mega" style="--d:.12s">平行任務</h1>
   <p class="lead r" style="--d:.24s; margin-top:22px">同一時間，開好幾條工作線。</p>
 </section>
-
-
-<!-- ── worktree 概念 ──────────────────────── -->
 <section class="slide" data-sec="git worktree">
-  <div class="cols c-media" style="align-items:center">
-    <div class="stack g20">
-      <div class="kicker r">概念</div>
-      <h1 class="r h1s" style="--d:.14s; font-size:44px">一個功能一條工作區。</h1>
-      <p class="lead r" style="--d:.24s"><b>不用 stash、不用切分支。</b><br>三條各跑各的，互不打架。</p>
-      <div class="code r" style="--d:.34s; font-size:15px"><span class="k">git worktree add</span> ../feat-checkout feat/checkout</div>
-    </div>
-    <div class="r" style="--d:.3s; display:grid; place-items:center">
-      <svg viewBox="0 0 240 200" style="width:250px" aria-label="一個 repo 三條 worktree">
-        <rect x="86" y="82" width="68" height="36" rx="6" fill="none" stroke="#4B5A83" stroke-width="3"/>
-        <text x="120" y="105" text-anchor="middle" font-size="12" fill="#4B5A83" font-family="monospace">repo</text>
-        <g stroke="#D97757" stroke-width="3" fill="none">
-          <path d="M86 100H36v-40"/><path d="M120 82V36"/><path d="M154 100h50v-40"/>
-        </g>
-        <rect x="14" y="30" width="44" height="30" rx="5" fill="#D97757" opacity=".85"/>
-        <rect x="98" y="10" width="44" height="30" rx="5" fill="#D97757" opacity=".85"/>
-        <rect x="182" y="30" width="44" height="30" rx="5" fill="#D97757" opacity=".85"/>
-      </svg>
-    </div>
+  <div class="kicker r">概念</div>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">一個功能一條工作區，不用 stash、不用切分支。</h1>
+  <div class="code dark r" style="--d:.18s; font-size:18px; line-height:2.05;">
+<span class="c">// 同一個 repo，開三條各自獨立的工作區</span><br>
+<span class="k">git worktree add</span> <span class="w">../feat-checkout  feat/checkout</span><br>
+<span class="k">git worktree add</span> <span class="w">../feat-invoice   feat/invoice</span><br>
+<span class="k">git worktree add</span> <span class="w">../fix-cron       fix/cron</span><br>
+<br>
+<span class="c">// 三條各跑各的 Claude Code，互不打架</span>
   </div>
 </section>
-
-
-<!-- ── 對你的價值 ─────────────────────────── -->
 <section class="slide" data-sec="worktree 什麼時候才需要">
   <div class="kicker b r">先確認需求，別為了用而用</div>
-  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:28px">線性流水線<span class="hl">不需要</span> worktree，硬開只是多開幾個視窗。</h1>
-
-  <div class="cols c-2 r" style="--d:.2s; gap:40px">
-    <div class="card"><div class="idx">真的有價值 01</div><h3 style="font-size:29px">兩個客戶案同時跑</h3><p style="font-size:21px">兩條完全獨立，互不影響。</p></div>
-    <div class="card b"><div class="idx">真的有價值 02</div><h3 style="font-size:29px">同一需求做三版</h3><p style="font-size:21px">並排比較，挑最好的那一版。</p></div>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">線性流水線<span class="hl">不需要</span> worktree，硬開只是多開視窗。</h1>
+  <div class="cols c-2 r" style="--d:.18s; gap:44px">
+    <div class="stack g16">
+      <div class="code dark" style="font-size:30px; padding:20px 26px"><span class="k">兩個客戶案同時跑</span></div>
+      <p class="body" style="font-size:23px">兩條完全獨立，互不影響。</p>
+    </div>
+    <div class="stack g16">
+      <div class="code dark" style="font-size:30px; padding:20px 26px"><span style="color:#9FB6E8">同一需求做三版</span></div>
+      <p class="body" style="font-size:23px">並排比較，挑最好的那一版。</p>
+    </div>
   </div>
-
-  <p class="note r" style="--d:.34s; margin-top:26px">代價：每條 worktree 都要各自 <span class="hl">composer install</span> / <span class="hl">npm i</span>。</p>
 </section>
-
-
-<!-- ── goal 與排程 ────────────────────────── -->
-<section class="slide top" data-sec="goal 與排程指令" style="padding-top:76px">
+<section class="slide" data-sec="goal 與排程指令">
   <div class="kicker r">讓工作線自己跑下去</div>
-  <div class="steps r" style="--d:.16s">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">完成條件寫得夠具體，它才會自己停。</h1>
+  <div class="steps r" style="--d:.18s">
     <div class="it"><div class="no">1</div><div><div class="tx"><span class="hl">/goal</span>　設完成條件</div><div class="sb">每一輪獨立評估「達標了沒」，沒達標就繼續</div></div></div>
-    <div class="it b"><div class="no">2</div><div><div class="tx"><span class="hl b">/loop</span>　固定間隔重跑一件事</div><div class="sb">例：每 10 分鐘看一次 CI 過了沒</div></div></div>
+    <div class="it b"><div class="no">2</div><div><div class="tx"><span class="hl b">/loop</span>　固定間隔重跑</div><div class="sb">例：每 10 分鐘看一次 CI 過了沒</div></div></div>
     <div class="it"><div class="no">3</div><div><div class="tx"><span class="hl">/schedule</span>　排定時任務</div><div class="sb">例：每週一早上整理上週的 session 紀錄</div></div></div>
   </div>
-  <p class="lead wide r" style="--d:.3s; margin-top:32px">關鍵在<b>完成條件寫得夠具體</b>——寫不清楚，它會一直跑。</p>
 </section>
-
-
-<!-- ── dynamic workflow ───────────────────── -->
 <section class="slide" data-sec="dynamic workflow">
   <div class="kicker b r">再上一層</div>
-  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:30px">一支腳本，調度一整批 subagent。</h1>
-
-  <div class="cols r" style="--d:.2s; grid-template-columns:1.1fr .9fr; gap:44px; align-items:center">
-    <div class="code dark" style="font-size:17px; line-height:2.1">
-<span class="c">// 六個面向平行審，各自驗</span><br>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">一支腳本，調度一整批 subagent。</h1>
+  <div class="code dark r" style="--d:.18s; font-size:18px; line-height:2.05;">
+<span class="c">// 六個面向平行審，每個發現再各自丟去驗證</span><br>
 <span class="k">pipeline</span>(DIMENSIONS,<br>
 　d =&gt; <span class="k">agent</span>(d.prompt),<br>
 　r =&gt; <span class="k">parallel</span>(r.findings.map(verify))<br>
-)
-    </div>
-    <div class="stack g16">
-      <p class="body" style="font-size:23px">審查分六個面向同時跑，<br>每個面向的發現再各自丟去驗證。</p>
-      <p class="note">很貴。<span class="hl">要你明確開口才會跑，</span><br>不是日常工具。</p>
-    </div>
+)<br>
+<br>
+<span class="c">// 很貴。要你明確開口才會跑，不是日常工具</span>
   </div>
 </section>
-
-
-<!-- ── 三層對照 ───────────────────────────── -->
 <section class="slide" data-sec="三種平行，怎麼選">
   <div class="kicker r">由輕到重</div>
-  <div class="tri r" style="--d:.16s; margin-top:14px">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">先從 subagent 開始，workflow 少用。</h1>
+  <div class="tri r" style="--d:.18s">
     <div>
       <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></div>
       <h3>Subagent</h3>
@@ -112,7 +84,6 @@
     </div>
   </div>
 </section>
-
 
 </div></div>
 <script src="assets/deck.js"></script>

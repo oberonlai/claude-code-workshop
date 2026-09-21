@@ -9,127 +9,82 @@
 <body data-unit="03" data-unit-name="Session 管理" data-prev="02-basics.html" data-next="04-subagent-hook.html" data-home="toc.html">
 <div id="viewport"><div id="stage">
 
-
-<!-- ── 章節首頁（靛） ─────────────────────── -->
 <section class="slide sec b" data-sec="Session 管理">
   <div class="ghostno">03</div>
   <div class="secno r">SECTION 03</div>
   <h1 class="r mega" style="--d:.12s">Session 管理</h1>
   <p class="lead r" style="--d:.24s; margin-top:22px">上下文 70% 是甜蜜點。</p>
 </section>
-
-
-<!-- ── 命名 / resume / branch ─────────────── -->
-<section class="slide top" data-sec="命名、resume、branch" style="padding-top:76px">
+<section class="slide" data-sec="命名、resume、branch">
   <div class="kicker r">先讓對話有名字、能回頭</div>
-  <div class="steps r" style="--d:.16s">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">一個任務一條 session，做完就換新的。</h1>
+  <div class="steps r" style="--d:.18s">
     <div class="it"><div class="no">1</div><div><div class="tx"><span class="hl">/rename</span>　給對話一個名字</div><div class="sb">「plugin-v2.3-release」比「Untitled」好找一百倍</div></div></div>
-    <div class="it b"><div class="no">2</div><div><div class="tx"><span class="hl b">/resume</span>　挑一個舊對話接著做</div><div class="sb">昨天的脈絡整包回來，不用重講一次背景</div></div></div>
-    <div class="it"><div class="no">3</div><div><div class="tx"><span class="hl">/branch</span>　從中間岔出一條新線</div><div class="sb">同一份脈絡試兩種做法，原本那條不會被弄髒</div></div></div>
+    <div class="it b"><div class="no">2</div><div><div class="tx"><span class="hl b">/resume</span>　挑一個舊對話接著做</div><div class="sb">昨天的脈絡整包回來，不用重講背景</div></div></div>
+    <div class="it"><div class="no">3</div><div><div class="tx"><span class="hl">/branch</span>　從中間岔出一條新線</div><div class="sb">複製整段對話再分開走，原本那條不會被弄髒</div></div></div>
   </div>
-  <p class="lead wide r" style="--d:.3s; margin-top:32px">一個任務一條 session。<b>任務結束就換新的，不要一路續下去。</b></p>
 </section>
-
-
-<!-- ── rewind 與 checkpoint ───────────────── -->
 <section class="slide" data-sec="rewind 與 checkpoint">
-  <div class="cols c-media" style="align-items:center">
-    <div class="stack g20">
-      <div class="kicker b r">改壞了怎麼辦</div>
-      <h1 class="r h1s" style="--d:.14s; font-size:48px">對話自己能倒帶。</h1>
-      <p class="body r" style="--d:.24s">Claude Code 會在每次改檔前存一個 <b>checkpoint</b>。<br><span class="hl">Esc Esc</span> 或 <span class="hl">/rewind</span> 挑一個點回去。</p>
-    </div>
-    <div class="stack g12 r" style="--d:.3s">
-      <div class="code dark" style="font-size:16px; line-height:2">
-<span class="c">/rewind 讓你選要退回什麼</span><br>
+  <div class="kicker b r">改壞了怎麼辦</div>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">對話自己能倒帶。</h1>
+  <div class="code dark r" style="--d:.18s; font-size:19px; line-height:2.05;">
+<span class="c">// Claude Code 每次改檔前都存一個 checkpoint</span><br>
+<span class="c">// 按 Esc Esc，或打 /rewind，挑一個點回去：</span><br>
+<br>
 <span class="k">▸</span> <span class="w">只退對話</span>　　程式碼保留<br>
 <span class="k">▸</span> <span class="w">只退檔案</span>　　對話保留<br>
 <span class="k">▸</span> <span class="w">兩個都退</span>　　整段重來
-      </div>
-      <p class="note">checkpoint 只涵蓋 Claude 改的檔，<br>你自己手動改的不在裡面。</p>
-    </div>
   </div>
 </section>
-
-
-<!-- ── @ 提及其他 session ─────────────────── -->
 <section class="slide" data-sec="跨 session 傳訊息">
   <div class="kicker r">兩條線要對話的時候</div>
-  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:28px">用 <span class="hl">@</span> 點名另一個 session，把問題丟過去。</h1>
-
-  <div class="code dark r" style="--d:.18s; font-size:17px; line-height:2.2">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">用 <span class="hl">@</span> 點名另一個 session，把問題丟過去。</h1>
+  <div class="code dark r" style="--d:.18s; font-size:18px; line-height:2.1;">
 <span class="c">// 你在 frontend 這條，需要後端先定案</span><br>
 <span class="k">@api-refactor</span> <span class="w">你那邊的 endpoint 定案了嗎？</span><br>
 <br>
 <span class="c">// 訊息直接送進那條 session，它回完你再繼續</span><br>
 <span class="w">POST /v1/orders，欄位清單我寫在 docs/api.md</span>
   </div>
-
-  <div class="quote r" style="--d:.3s; margin-top:28px">
-    <p style="font-size:26px">不用自己在兩個視窗之間<b>複製貼上轉述。</b></p>
-  </div>
 </section>
-
-
-<!-- ── context 觀察 ───────────────────────── -->
 <section class="slide" data-sec="context 要盯著看">
   <div class="kicker b r">先看數字，再決定動作</div>
-  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:32px">context 滿了不會停，它會<span class="hl">自己砍掉前面</span>。</h1>
-  <div class="pipe r" style="--d:.2s">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">context 滿了不會停，它會<span class="hl">自己砍掉前面</span>。</h1>
+  <div class="pipe r" style="--d:.18s">
     <div class="node o"><div class="t">70% 以下</div><div class="s">正常做事</div></div>
     <div class="arw"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
     <div class="node b"><div class="t">70–85%</div><div class="s">找段落收尾</div></div>
     <div class="arw"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
     <div class="node b"><div class="t">85% 以上</div><div class="s">compact 或開新的</div></div>
   </div>
-  <p class="note r" style="--d:.32s; margin-top:36px">隨時 <span class="hl">/context</span> 看一眼，別等它自己爆。</p>
 </section>
-
-
-<!-- ── compact vs clear ───────────────────── -->
 <section class="slide" data-sec="compact 還是 clear">
   <div class="kicker r">兩個很像、但差很多</div>
-
-  <div class="cols c-2 r" style="--d:.16s; margin-top:20px; gap:44px">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">接下來要做的事，需不需要剛剛那些脈絡？</h1>
+  <div class="cols c-2 r" style="--d:.18s; gap:44px">
     <div class="stack g16">
-      <div class="code dark" style="font-size:38px; padding:20px 26px; letter-spacing:.01em"><span class="k">/compact</span></div>
-      <p class="body" style="font-size:22px"><b>壓縮，不是清空。</b>把前面的對話摘要成一段，繼續同一個任務。</p>
-      <p class="note">時機：同一件事還沒做完，但快撐不住了。</p>
+      <div class="code dark" style="font-size:30px; padding:20px 26px"><span class="k">/compact</span></div>
+      <p class="body" style="font-size:23px"><b>壓縮，不是清空。</b>同一件事還沒做完，<br>但快撐不住了。</p>
     </div>
     <div class="stack g16">
-      <div class="code dark" style="font-size:38px; padding:20px 26px; letter-spacing:.01em"><span style="color:#9FB6E8">/clear</span></div>
-      <p class="body" style="font-size:22px"><b>整個倒掉。</b>上一個任務結束，下一件事完全無關。</p>
-      <p class="note">時機：換題目。留著舊脈絡只會干擾判斷。</p>
+      <div class="code dark" style="font-size:30px; padding:20px 26px"><span style="color:#9FB6E8">/clear</span></div>
+      <p class="body" style="font-size:23px"><b>整個倒掉。</b>換題目了，<br>留著舊脈絡只會干擾判斷。</p>
     </div>
-  </div>
-
-  <div class="quote r" style="--d:.32s; margin-top:30px">
-    <p style="font-size:26px">判斷法：<b>接下來要做的事，需不需要剛剛那些脈絡？</b></p>
   </div>
 </section>
-
-
-<!-- ── output style ───────────────────────── -->
 <section class="slide" data-sec="output style">
-  <div class="kicker b r">改的是「怎麼講」</div>
-  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:30px">同一個答案，可以有不同講法。</h1>
-
-  <div class="cols r" style="--d:.2s; grid-template-columns:1.15fr .85fr; gap:44px; align-items:center">
-    <div class="code dark" style="font-size:17px; line-height:2.1">
+  <div class="kicker b r">改的是「怎麼講」，不是能力</div>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">同一個答案，可以有不同講法。</h1>
+  <div class="code dark r" style="--d:.18s; font-size:18px; line-height:2.0;">
+<span class="c">// 打 /output-style 切換，也可以自己寫一份存起來：</span><br>
 <span class="c">~/.claude/output-styles/teaching.md</span><br>
 <span class="k">---</span><br>
 <span class="k">name:</span> <span class="w">teaching</span><br>
 <span class="k">description:</span> <span class="w">邊做邊解釋，給學員看</span><br>
 <span class="k">---</span><br>
 <span class="w">每改一個檔案，先講一句為什麼要改。</span>
-    </div>
-    <div class="stack g16">
-      <p class="body" style="font-size:23px">打 <span class="hl">/output-style</span> 切換，<br>也可以自己寫一份存起來重複用。</p>
-      <p class="note">它改的是回話風格，<br>不是能力，也不是權限。</p>
-    </div>
   </div>
 </section>
-
 
 </div></div>
 <script src="assets/deck.js"></script>

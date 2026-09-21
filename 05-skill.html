@@ -9,44 +9,29 @@
 <body data-unit="05" data-unit-name="Skill 架構設計" data-prev="04-subagent-hook.html" data-next="06-parallel.html" data-home="toc.html">
 <div id="viewport"><div id="stage">
 
-
-<!-- ── 章節首頁（深珊瑚） ─────────────────── -->
 <section class="slide sec od" data-sec="Skill 架構設計">
   <div class="ghostno">05</div>
   <div class="secno r">SECTION 05 · 本堂核心</div>
   <h1 class="r mega" style="--d:.12s">Skill 架構設計</h1>
   <p class="lead r" style="--d:.24s; margin-top:22px">一個資料夾、一份 SKILL.md，<br>其餘用到才讀。</p>
 </section>
-
-
-<!-- ── 資料夾結構 ─────────────────────────── -->
 <section class="slide" data-sec="一個 Skill 長什麼樣">
   <div class="kicker r">先看它在硬碟上的樣子</div>
-
-  <div class="cols r" style="--d:.14s; grid-template-columns:1.12fr .88fr; gap:44px; align-items:center; margin-top:16px">
-    <div class="code dark" style="font-size:17px; line-height:2.1">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">一個 skill 就是一個資料夾，只有 SKILL.md 是必要的。</h1>
+  <div class="code dark r" style="--d:.18s; font-size:18px; line-height:2.0;">
 <span class="w">.claude/skills/</span><br>
-└─ <span class="k">plugin-release/</span>　　<span class="c">資料夾名＝skill 名</span><br>
-　　├─ <span class="k">SKILL.md</span>　　　<span class="c">唯一必要的檔案</span><br>
-　　├─ <span class="w">checklist.md</span>　<span class="c">附屬檔</span><br>
+└─ <span class="k">plugin-release/</span>　　　<span class="c">資料夾名＝skill 名</span><br>
+　　├─ <span class="k">SKILL.md</span>　　　　<span class="c">唯一必要的檔案</span><br>
+　　├─ <span class="w">checklist.md</span>　　<span class="c">附屬檔，要用才讀</span><br>
 　　└─ <span class="w">steps/</span><br>
 　　　　├─ <span class="w">01-version.md</span><br>
 　　　　└─ <span class="w">02-svn.md</span>
-    </div>
-    <div class="stack g20">
-      <p class="body" style="font-size:23px">一個 skill ＝ <b>一個資料夾</b>。</p>
-      <p class="body" style="font-size:23px">裡面<b>只有 SKILL.md 是必要的</b>，<br>其他檔案要不要放、放幾個，你自己決定。</p>
-      <p class="note">資料夾名稱就是它的識別，<br>不要跟其他 skill 撞名。</p>
-    </div>
   </div>
 </section>
-
-
-<!-- ── SKILL.md 的組成 ────────────────────── -->
 <section class="slide" data-sec="SKILL.md 的組成">
   <div class="kicker b r">打開 SKILL.md，上下兩段</div>
-
-  <div class="code dark r" style="--d:.16s; font-size:17px; line-height:2.05; margin-top:14px">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">上半決定「什麼時候被叫到」，下半才是「做什麼」。</h1>
+  <div class="code dark r" style="--d:.18s; font-size:18px; line-height:2.0;">
 <span class="k">---</span>　　　　　　　　　　　　　　<span class="c">← 上半：frontmatter（YAML）</span><br>
 <span class="k">name:</span> <span class="w">plugin-release</span><br>
 <span class="k">description:</span> <span class="w">外掛發版流程。使用者說「發版」時用。</span><br>
@@ -55,31 +40,20 @@
 <span class="w">## 步驟</span>　　　　　　　　　　　　<span class="c">← 下半：本文（Markdown）</span><br>
 <span class="w">1. 確認版本號 → 細節見 steps/01-version.md</span>
   </div>
-
-  <div class="quote r" style="--d:.3s; margin-top:26px">
-    <p style="font-size:26px">上半決定<b>「什麼時候被叫到」</b>，下半才是<b>「叫到之後做什麼」</b>。</p>
-  </div>
 </section>
-
-
-<!-- ── frontmatter 欄位 ───────────────────── -->
 <section class="slide" data-sec="frontmatter 有哪些欄位">
   <div class="kicker r">兩個必填，其餘看需要</div>
-  <div class="steps r" style="--d:.16s; margin-top:16px">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px"><span class="hl">description</span> 這句話，決定它被不被叫到。</h1>
+  <div class="steps r" style="--d:.18s">
     <div class="it"><div class="no">必填</div><div><div class="tx"><span class="hl">name</span></div><div class="sb">跟資料夾同名，小寫加連字號</div></div></div>
-    <div class="it b"><div class="no">必填</div><div><div class="tx"><span class="hl b">description</span></div><div class="sb">寫清楚「什麼情況會用到」—— 這句話決定它被不被叫到</div></div></div>
-    <div class="it"><div class="no">選填</div><div><div class="tx"><span class="hl">allowed-tools</span>　<span class="hl">disable-model-invocation</span></div><div class="sb">限制它能動的工具，或改成只有你打斜線才會啟動</div></div></div>
+    <div class="it b"><div class="no">必填</div><div><div class="tx"><span class="hl b">description</span></div><div class="sb">寫清楚「什麼情況會用到」，含糊就不會被叫</div></div></div>
+    <div class="it"><div class="no">選填</div><div><div class="tx"><span class="hl">allowed-tools</span>　<span class="hl">disable-model-invocation</span></div><div class="sb">限制它能動的工具，或改成只有你打斜線才啟動</div></div></div>
   </div>
-  <p class="note r" style="--d:.3s; margin-top:24px">description 寫得含糊，Claude 就不知道何時該叫它 —— <span class="hl">這是最常見的失效原因。</span></p>
 </section>
-
-
-<!-- ── 為什麼要拆 ─────────────────────────── -->
 <section class="slide" data-sec="為什麼要拆成這樣">
   <div class="kicker b r">因為它是分三次載入的</div>
-  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:30px">用不到的段落，就不要花錢載進來。</h1>
-
-  <div class="pipe r" style="--d:.2s">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">用不到的段落，就不要花錢載進來。</h1>
+  <div class="pipe r" style="--d:.18s">
     <div class="node o"><div class="t">平常</div><div class="s">只有 name＋description</div></div>
     <div class="arw"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
     <div class="node b"><div class="t">被叫用時</div><div class="s">SKILL.md 本文才載入</div></div>
@@ -87,21 +61,19 @@
     <div class="node b"><div class="t">需要細節時</div><div class="s">才去讀 steps/*.md</div></div>
   </div>
 </section>
-
-
-<!-- ── 三段各自的設計原則 ─────────────────── -->
 <section class="slide" data-sec="所以每一段各有寫法">
   <div class="kicker r">三次載入，對應三種寫法</div>
-  <div class="tri r" style="--d:.16s; margin-top:14px">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">常駐的寫觸發情境，本文留導航，細節丟外部檔。</h1>
+  <div class="tri r" style="--d:.18s">
     <div>
       <div class="ico"><svg viewBox="0 0 24 24"><path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4"/></svg></div>
       <h3>description</h3>
-      <p>寫<b>觸發情境</b>，不是寫功能介紹。它一直常駐在 context 裡。</p>
+      <p>寫<b>觸發情境</b>，不是功能介紹。它一直常駐在 context 裡。</p>
     </div>
     <div>
       <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div>
       <h3>SKILL.md 本文</h3>
-      <p>只留<b>階段與判斷點</b>。看得出現在在哪一步、下一步讀哪個檔。</p>
+      <p>只留<b>階段與判斷點</b>。看得出在哪一步、下一步讀哪個檔。</p>
     </div>
     <div>
       <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6zM9 12h6M9 16h6"/></svg></div>
@@ -110,35 +82,24 @@
     </div>
   </div>
 </section>
-
-
-<!-- ── 抽成 Skill 還是附屬檔 ──────────────── -->
 <section class="slide" data-sec="抽成 Skill 還是附屬檔">
   <div class="kicker b r">最常被問的一題</div>
-
-  <div class="cols c-2 r" style="--d:.16s; margin-top:20px; gap:44px">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">會被第二個地方叫到的，才抽成獨立 skill。</h1>
+  <div class="cols c-2 r" style="--d:.18s; gap:44px">
     <div class="stack g16">
-      <div class="code dark" style="font-size:28px; padding:20px 26px"><span class="k">獨立 Skill</span></div>
-      <p class="body" style="font-size:23px">會<b>被別的流程叫到</b>，或你想單獨用 <span class="hl">/</span> 觸發它。</p>
-      <p class="note">例：「i18n 翻譯」兩個外掛都在用。</p>
+      <div class="code dark" style="font-size:30px; padding:20px 26px"><span class="k">獨立 Skill</span></div>
+      <p class="body" style="font-size:23px">會<b>被別的流程叫到</b>，或想單獨用 / 觸發。<br>例：「i18n 翻譯」兩個外掛都在用。</p>
     </div>
     <div class="stack g16">
-      <div class="code dark" style="font-size:28px; padding:20px 26px"><span style="color:#9FB6E8">附屬檔</span></div>
-      <p class="body" style="font-size:23px">只有<b>這個流程的某一步</b>會讀，沒有獨立生命。</p>
-      <p class="note">例：發版第三步的 SVN 指令清單。</p>
+      <div class="code dark" style="font-size:30px; padding:20px 26px"><span style="color:#9FB6E8">附屬檔</span></div>
+      <p class="body" style="font-size:23px">只有<b>這個流程的某一步</b>會讀。<br>例：發版第三步的 SVN 指令清單。</p>
     </div>
-  </div>
-
-  <div class="quote r" style="--d:.32s; margin-top:30px">
-    <p style="font-size:26px">判斷法：<b>它會不會被第二個地方叫到？</b>不會，就是附屬檔。</p>
   </div>
 </section>
-
-
-<!-- ── 不可逆保護 ─────────────────────────── -->
 <section class="slide" data-sec="不可逆操作的保護">
   <div class="kicker r">上線、刪資料、推 production</div>
-  <div class="tri r" style="--d:.16s; margin-top:14px">
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">三層一起上，任何一層單獨都不夠。</h1>
+  <div class="tri r" style="--d:.18s">
     <div>
       <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 11V8a6 6 0 0 1 12 0v3M5 11h14v10H5z"/></svg></div>
       <h3>入口鎖死</h3>
@@ -155,9 +116,7 @@
       <p>PreToolUse 攔危險指令。<b>不靠模型自覺。</b></p>
     </div>
   </div>
-  <p class="note r" style="--d:.3s; margin-top:30px">三層一起上 —— <span class="hl">任何一層單獨都不夠。</span></p>
 </section>
-
 
 </div></div>
 <script src="assets/deck.js"></script>

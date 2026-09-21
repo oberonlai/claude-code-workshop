@@ -6,78 +6,43 @@
 <title>UNIT 01 使用健檢｜Claude Code 基礎教學與進階觀念</title>
 <link rel="stylesheet" href="assets/deck.css">
 </head>
-<body data-unit="01" data-unit-name="使用健檢" data-prev="toc.html" data-home="toc.html" data-next="02-basics.html">
+<body data-unit="01" data-unit-name="使用健檢" data-prev="toc.html" data-next="02-basics.html" data-home="toc.html">
 <div id="viewport"><div id="stage">
 
-
-<!-- ── 封面 ───────────────────────────────── -->
-<!-- ── 今天要走的路 ───────────────────────── -->
 <section class="slide" data-sec="今天要走的路">
   <div class="kicker b r">兩小時，三個階段</div>
-  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:32px">先量，再分工，最後放大產能。</h1>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">先量，再分工，最後放大產能。</h1>
   <div class="steps r" style="--d:.18s">
     <div class="it"><div class="no">01</div><div><div class="tx">先量</div><div class="sb">使用健檢 —— 哪些 skill 真的在跑、哪些只是佔 context</div></div></div>
     <div class="it b"><div class="no">02</div><div><div class="tx">再分工</div><div class="sb">觀念與環境、Session 管理、Subagent 與 Hook、Skill 架構</div></div></div>
     <div class="it"><div class="no">03</div><div><div class="tx">最後放大</div><div class="sb">平行任務 —— worktree、排程、dynamic workflow</div></div></div>
   </div>
 </section>
-
-
-
-
-<!-- ── /skill-doctor ──────────────────────── -->
 <section class="slide" data-sec="/skill-doctor">
-  <div class="cols r" style="--d:.06s; grid-template-columns:1.32fr .68fr; gap:44px; align-items:center">
-    <div class="shot">
-      <img src="assets/shots/skill-doctor.png" alt="/skill-doctor 執行畫面">
-      <div class="ph">
-        <div class="box"></div>
-        <div class="fn">assets/shots/skill-doctor.png</div>
-        <div class="hint">SCREENSHOT PLACEHOLDER</div>
-      </div>
-    </div>
-    <div class="stack g16">
-      <div class="code dark" style="padding:14px 18px"><span class="k">/skill-doctor</span></div>
-      <p class="body" style="font-size:21px">幫你把<b>每一個 skill</b> 攤開來看：<br>體積多大、被叫過幾次、上次什麼時候。</p>
-      <p class="note">長期 0 次的，就是常駐成本卻沒回報。</p>
-    </div>
+  <div class="kicker r">先打這一行</div>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">每個 skill 用了幾次、佔多少，一次攤開。</h1>
+  <div class="shot r" style="--d:.18s; max-width:720px; width:100%; margin:0 auto">
+    <img src="assets/shots/skill-doctor.png" alt="/skill-doctor 執行畫面">
+    <div class="ph"><div class="box"></div><div class="fn">assets/shots/skill-doctor.png</div><div class="hint">SCREENSHOT PLACEHOLDER</div></div>
   </div>
 </section>
-
-
-<!-- ── /context ───────────────────────────── -->
 <section class="slide" data-sec="/context">
-  <div class="cols r" style="--d:.06s; grid-template-columns:1.32fr .68fr; gap:44px; align-items:center">
-    <div class="shot">
-      <img src="assets/shots/context.png" alt="/context 執行畫面">
-      <div class="ph">
-        <div class="box"></div>
-        <div class="fn">assets/shots/context.png</div>
-        <div class="hint">SCREENSHOT PLACEHOLDER</div>
-      </div>
-    </div>
-    <div class="stack g16">
-      <div class="code dark" style="padding:14px 18px"><span class="k">/context</span></div>
-      <p class="body" style="font-size:21px">看<b>這一次對話</b>的 context 被誰吃掉：<br>工具、MCP、skill、訊息各佔多少。</p>
-      <p class="note">Skills 那一列是套過預算後的實際值，<br>不是原始大小。</p>
-    </div>
+  <div class="kicker b r">再打這一行</div>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">這一次對話的 context，被誰吃掉了。</h1>
+  <div class="shot r" style="--d:.18s; max-width:720px; width:100%; margin:0 auto">
+    <img src="assets/shots/context.png" alt="/context 執行畫面">
+    <div class="ph"><div class="box"></div><div class="fn">assets/shots/context.png</div><div class="hint">SCREENSHOT PLACEHOLDER</div></div>
   </div>
 </section>
-
-
-<!-- ── 換你跑一次 ─────────────────────────── -->
 <section class="slide" data-sec="換你跑一次這兩個指令">
-  <div class="kicker b r">現在打開你自己的 Claude Code</div>
-  <h1 class="r h1s" style="--d:.08s; font-size:44px; margin-bottom:26px">兩行指令，我陪你一起看。</h1>
+  <div class="kicker r">現在打開你自己的 Claude Code</div>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">兩行指令，我陪你一起看。</h1>
   <div class="steps r" style="--d:.18s">
-    <div class="it"><div class="no">1</div><div><div class="tx">打 <span class="hl">/skill-doctor</span></div><div class="sb">把畫面停著，先找出次數是 0 的那幾個</div></div></div>
+    <div class="it"><div class="no">1</div><div><div class="tx">打 <span class="hl">/skill-doctor</span></div><div class="sb">先找出次數是 0 的那幾個</div></div></div>
     <div class="it b"><div class="no">2</div><div><div class="tx">打 <span class="hl b">/context</span></div><div class="sb">看總用量，以及 Skills 與 MCP 各佔多少</div></div></div>
     <div class="it"><div class="no">3</div><div><div class="tx">檢查有沒有<span class="hl">不需要的東西</span>在佔 context</div><div class="sb">沒在用的 MCP、長期 0 次的 skill、過期的記憶檔</div></div></div>
   </div>
 </section>
-
-
-
 
 </div></div>
 <script src="assets/deck.js"></script>
