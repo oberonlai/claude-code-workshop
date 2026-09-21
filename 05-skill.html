@@ -16,8 +16,7 @@
   <p class="lead r" style="--d:.24s; margin-top:22px">一個資料夾、一份 SKILL.md，<br>其餘用到才讀。</p>
 </section>
 <section class="slide" data-sec="一個 Skill 長什麼樣">
-  <div class="kicker r">先看它在硬碟上的樣子</div>
-  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">一個 skill 就是一個資料夾，只有 SKILL.md 是必要的。</h1>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">一個 skill 就是一個資料夾。</h1>
   <div class="code dark r" style="--d:.18s; font-size:18px; line-height:2.0;">
 <span class="w">.claude/skills/</span><br>
 └─ <span class="k">plugin-release/</span>　　　<span class="c">資料夾名＝skill 名</span><br>
@@ -29,7 +28,6 @@
   </div>
 </section>
 <section class="slide" data-sec="SKILL.md 的組成">
-  <div class="kicker b r">打開 SKILL.md，上下兩段</div>
   <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">上半決定「什麼時候被叫到」，下半才是「做什麼」。</h1>
   <div class="code dark r" style="--d:.18s; font-size:18px; line-height:2.0;">
 <span class="k">---</span>　　　　　　　　　　　　　　<span class="c">← 上半：frontmatter（YAML）</span><br>
@@ -42,7 +40,6 @@
   </div>
 </section>
 <section class="slide" data-sec="frontmatter 有哪些欄位">
-  <div class="kicker r">兩個必填，其餘看需要</div>
   <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px"><span class="hl">description</span> 這句話，決定它被不被叫到。</h1>
   <div class="steps r" style="--d:.18s">
     <div class="it"><div class="no">必填</div><div><div class="tx"><span class="hl">name</span></div><div class="sb">跟資料夾同名，小寫加連字號</div></div></div>
@@ -51,7 +48,6 @@
   </div>
 </section>
 <section class="slide" data-sec="為什麼要拆成這樣">
-  <div class="kicker b r">因為它是分三次載入的</div>
   <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">用不到的段落，就不要花錢載進來。</h1>
   <div class="pipe r" style="--d:.18s">
     <div class="node o"><div class="t">平常</div><div class="s">只有 name＋description</div></div>
@@ -61,8 +57,7 @@
     <div class="node b"><div class="t">需要細節時</div><div class="s">才去讀 steps/*.md</div></div>
   </div>
 </section>
-<section class="slide" data-sec="所以每一段各有寫法">
-  <div class="kicker r">三次載入，對應三種寫法</div>
+<section class="slide" data-sec="三次載入，三種寫法">
   <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">常駐的寫觸發情境，本文留導航，細節丟外部檔。</h1>
   <div class="tri r" style="--d:.18s">
     <div>
@@ -83,21 +78,18 @@
   </div>
 </section>
 <section class="slide" data-sec="抽成 Skill 還是附屬檔">
-  <div class="kicker b r">最常被問的一題</div>
-  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">會被第二個地方叫到的，才抽成獨立 skill。</h1>
-  <div class="cols c-2 r" style="--d:.18s; gap:44px">
-    <div class="stack g16">
-      <div class="code dark" style="font-size:30px; padding:20px 26px"><span class="k">獨立 Skill</span></div>
-      <p class="body" style="font-size:23px">會<b>被別的流程叫到</b>，或想單獨用 / 觸發。<br>例：「i18n 翻譯」兩個外掛都在用。</p>
-    </div>
-    <div class="stack g16">
-      <div class="code dark" style="font-size:30px; padding:20px 26px"><span style="color:#9FB6E8">附屬檔</span></div>
-      <p class="body" style="font-size:23px">只有<b>這個流程的某一步</b>會讀。<br>例：發版第三步的 SVN 指令清單。</p>
-    </div>
+  <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">會被第二個地方用到，才獨立成 skill。</h1>
+  <div class="code dark r" style="--d:.18s; font-size:17px; line-height:2.05;">
+<span class="w">.claude/skills/</span><br>
+├─ <span class="k">plugin-release/</span>　　　　<span class="c">外掛發版流程</span><br>
+│　　├─ <span class="w">SKILL.md</span><br>
+│　　└─ <span class="w">steps/02-svn.md</span>　　<span class="c">只有發版讀得到 → 留成附屬檔</span><br>
+│<br>
+└─ <span class="k">wp-i18n/</span>　　　　　　　　<span class="c">翻譯流程</span><br>
+　　　└─ <span class="w">SKILL.md</span>　　　　　<span class="c">外掛、佈景都要叫 → 獨立成 skill</span>
   </div>
 </section>
 <section class="slide" data-sec="不可逆操作的保護">
-  <div class="kicker r">上線、刪資料、推 production</div>
   <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">三層一起上，任何一層單獨都不夠。</h1>
   <div class="tri r" style="--d:.18s">
     <div>

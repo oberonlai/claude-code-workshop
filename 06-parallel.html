@@ -16,7 +16,6 @@
   <p class="lead r" style="--d:.24s; margin-top:22px">同一時間，開好幾條工作線。</p>
 </section>
 <section class="slide" data-sec="git worktree">
-  <div class="kicker r">概念</div>
   <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">一個功能一條工作區，不用 stash、不用切分支。</h1>
   <div class="code dark r" style="--d:.18s; font-size:18px; line-height:2.05;">
 <span class="c">// 同一個 repo，開三條各自獨立的工作區</span><br>
@@ -28,7 +27,6 @@
   </div>
 </section>
 <section class="slide" data-sec="worktree 什麼時候才需要">
-  <div class="kicker b r">先確認需求，別為了用而用</div>
   <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">線性流水線<span class="hl">不需要</span> worktree，硬開只是多開視窗。</h1>
   <div class="cols c-2 r" style="--d:.18s; gap:44px">
     <div class="stack g16">
@@ -42,7 +40,6 @@
   </div>
 </section>
 <section class="slide" data-sec="goal 與排程指令">
-  <div class="kicker r">讓工作線自己跑下去</div>
   <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">完成條件寫得夠具體，它才會自己停。</h1>
   <div class="steps r" style="--d:.18s">
     <div class="it"><div class="no">1</div><div><div class="tx"><span class="hl">/goal</span>　設完成條件</div><div class="sb">每一輪獨立評估「達標了沒」，沒達標就繼續</div></div></div>
@@ -51,7 +48,6 @@
   </div>
 </section>
 <section class="slide" data-sec="dynamic workflow">
-  <div class="kicker b r">再上一層</div>
   <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">一支腳本，調度一整批 subagent。</h1>
   <div class="code dark r" style="--d:.18s; font-size:18px; line-height:2.05;">
 <span class="c">// 六個面向平行審，每個發現再各自丟去驗證</span><br>
@@ -64,7 +60,6 @@
   </div>
 </section>
 <section class="slide" data-sec="三種平行，怎麼選">
-  <div class="kicker r">由輕到重</div>
   <h1 class="r h1s" style="--d:.08s; font-size:46px; margin-bottom:30px">先從 subagent 開始，workflow 少用。</h1>
   <div class="tri r" style="--d:.18s">
     <div>
