@@ -441,7 +441,17 @@ function applySpot(s){
   spot.classList.add('on');
 }
 
+/* 把目前張數寫進網址（#p3），重新整理時就停在同一張。
+   用 replaceState 避免每翻一頁就多一筆瀏覽紀錄；file:// 下若被擋就退回改 hash。 */
+function writeHash(){
+  var h = '#p' + (cur + 1);
+  if(W.location.hash === h) return;
+  try{ history.replaceState(null, '', h); }
+  catch(e){ W.location.hash = h; }
+}
+
 function enter(s){
+  writeHash();
   ebSec.textContent = s.dataset.sec || UNAME;
   pnCur.textContent = String(cur+1).padStart(2,'0');
   rail.style.width = (slides.length > 1 ? cur/(slides.length-1)*100 : 100) + '%';
@@ -555,10 +565,17 @@ D.addEventListener('keydown', function(e){
   else if(k === 'r' || k === 'R'){ e.preventDefault(); replayCurrent(); }
 });
 
-/* 首張（從上一單元倒退進來時直接落在最後一張） */
-var startAt = (W.location.hash === '#end') ? slides.length-1 : 0;
+/* 首張：#end 代表從下一單元倒退進來，#pN 代表重新整理前停在第 N 張 */
+var hash = W.location.hash;
+var startAt = 0;
+if(hash === '#end'){
+  startAt = slides.length - 1;
+}else{
+  var mp = /^#p(\d+)$/.exec(hash);
+  if(mp) startAt = Math.min(Math.max(+mp[1], 1), slides.length) - 1;
+}
 cur = startAt;
-step = (W.location.hash === '#end') ? maxStep(slides[cur]) : 0;
+step = (hash === '#end') ? maxStep(slides[cur]) : 0;
 slides[cur].hidden = false;
 void slides[cur].offsetWidth;
 slides[cur].classList.add('in');
