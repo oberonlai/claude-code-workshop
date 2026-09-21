@@ -84,6 +84,13 @@ body{
 }
 .eyebrow-slot .u{color:var(--blogger-deep);}
 
+/* 每張投影片的主軸：比 UNIT 標籤大一級，直接看得出這頁在講什麼。 */
+.eyebrow-slot #ebSec{
+  font-family:var(--sans); font-size:21px; font-weight:700;
+  letter-spacing:.01em; text-transform:none; color:var(--ink);
+}
+#stage:has(.slide.sec.in) .eyebrow-slot #ebSec{color:rgba(255,255,255,.92);}
+
 #pageno{
   position:absolute; right:54px; bottom:17px; z-index:60;
   background:var(--paper); padding:0 12px;
